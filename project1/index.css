@@ -1,0 +1,95 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font family 還沒用*/
+}
+body {
+  background-color: gray;
+  display: block;
+  padding-top: 80px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+}
+
+.logo {
+  cursor: pointer;
+  margin-right: auto;
+  width: 140px;
+  align-self: center;
+}
+.logo img {
+  width: 30px;
+  height: auto;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbarp {
+  cursor: pointer;
+  margin: 30px 60px;
+  color: gray;
+  font-size: 18px; /* 調整文字大小 */
+}
+
+#navSearch {
+  margin: 0 60px;
+}
+#navSearch img {
+  width: 20px;
+  height: auto;
+}
+
+.top {
+  background-image: url(/project1/Image/key-visual.jpg);
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0px;
+  position: relative;
+}
+
+.topP1 {
+  color: aliceblue;
+  font-weight: bold;
+  margin: 10px 10px;
+  align-self: center;
+}
+
+#topP11 {
+  font-size: 38px;
+  letter-spacing: 5px;
+}
+#topP12 {
+  font-size: 24px;
+  letter-spacing: 10px;
+}
+#topArrowDown {
+  display: block;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#topArrowDown img {
+  height: 40px;
+  transform: rotate(90deg);
+}
