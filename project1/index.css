@@ -5,7 +5,6 @@
   /* font family 還沒用*/
 }
 body {
-  background-color: gray;
   display: block;
   padding-top: 80px;
 }
@@ -17,17 +16,19 @@ a {
 
 header {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.3);
   position: fixed;
   width: 100%;
   z-index: 1000;
   top: 0;
+  flex-direction: row;
 }
 
 .logo {
   cursor: pointer;
-  margin-right: auto;
+  margin-left: 60px;
   width: 140px;
   align-self: center;
 }
@@ -44,11 +45,11 @@ header {
   cursor: pointer;
   margin: 30px 60px;
   color: gray;
-  font-size: 18px; /* 調整文字大小 */
+  font-size: 18px;
 }
 
 #navSearch {
-  margin: 0 60px;
+  margin: 0 40px;
 }
 #navSearch img {
   width: 20px;
@@ -64,6 +65,8 @@ header {
   text-align: center;
   margin: 10px 0px;
   position: relative;
+  background-position-y: center;
+  background-position-x: center;
 }
 
 .topP1 {
@@ -92,4 +95,208 @@ header {
 #topArrowDown img {
   height: 40px;
   transform: rotate(90deg);
+}
+.second1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/project1/Image/main1-img.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-position-y: bottom;
+  background-position-x: center;
+}
+
+#second1p1 {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  letter-spacing: 3px;
+  line-height: 50px;
+  margin-bottom: 20px;
+}
+
+#second1button {
+  width: 130px;
+  height: 40px;
+  font-size: 20px;
+  background: transparent;
+  border-radius: 10px;
+  border: 2px solid aquamarine;
+  color: aquamarine;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.second2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/project1//Image/main2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px 0;
+  background-position-y: bottom;
+  background-position-x: center;
+}
+#second2p {
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  letter-spacing: 3px;
+  line-height: 50px;
+  margin-bottom: 20px;
+}
+.second2button {
+  width: 180px;
+  height: 40px;
+  font-size: 20px;
+  background: transparent;
+  border-radius: 10px;
+  border: 2px solid aquamarine;
+  color: aquamarine;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.second3 {
+  background-image: url(/project1/Image/main3.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 10px 0;
+  background-position-y: bottom;
+  background-position-x: center;
+}
+
+.white {
+  background-image: url(/project1/Image/FE_white.png);
+  background-size: cover;
+  height: 420px;
+  width: 320px;
+  margin: 0 40px;
+  display: block;
+}
+
+.pen img {
+  height: 50px;
+  width: 50px;
+  margin: 40px auto;
+}
+.second3titile {
+  font-size: 20px;
+  color: rgb(26, 216, 211);
+}
+.service-line {
+  border: 1px solid rgb(26, 216, 211);
+  width: 50px;
+  margin: 15px auto;
+}
+
+.second3P {
+  color: rgb(71, 71, 71);
+  line-height: 30px;
+}
+
+.second3button {
+  color: white;
+  border: none;
+  font-size: 20px;
+  background-color: rgb(26, 216, 211);
+  height: 35px;
+  width: 140px;
+  border-radius: 4px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.third {
+  background-image: url(/project1/Image/main4.jpg);
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  background-position-y: bottom;
+  background-position-x: center;
+}
+
+#thirdH1 {
+  color: white;
+  font-size: 30px;
+  margin: 30px auto;
+}
+.thirdline {
+  border: 1px solid white;
+  width: 40px;
+  margin: 0 auto;
+}
+#thirdP1 {
+  margin: 30px auto;
+
+  color: white;
+  font-size: 19px;
+}
+#thirdP2 {
+  margin-bottom: 100px;
+  color: white;
+  font-size: 19px;
+}
+
+.goUp {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#upup {
+  height: 50px;
+}
+footer {
+  background-color: rgb(231, 231, 231);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.footer1 {
+  color: rgb(105, 104, 104);
+  font-size: 15;
+  margin: 20px;
+}
+.footer2 {
+  color: rgb(26, 216, 211);
+  font-size: 15;
+  margin: auto 10px;
+}
+.footergroup {
+  display: flex;
+  margin: 20px;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+.footerimg {
+  height: 33px;
+  cursor: pointer;
+}
+.testgo img {
+  z-index: 2;
+  position: fixed;
+  width: 78px;
+  height: 69px;
+  bottom: 20%;
+  right: 0;
+  opacity: 0.8;
 }
