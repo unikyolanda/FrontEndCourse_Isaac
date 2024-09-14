@@ -7,6 +7,7 @@
 body {
   display: block;
   padding-top: 80px;
+  background-color: tomato;
 }
 
 a {
@@ -57,16 +58,16 @@ header {
 }
 
 .top {
-  background-image: url(Image/key-visual.jpg);
+  background-image: url(../Image/key-visual.jpg);
   height: 580px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 10px 0px;
   position: relative;
-  background-position-y: center;
-  background-position-x: center;
+  background-position-y: 50%;
+  background-position-x: 50%;
+  margin: 10px 0px;
 }
 
 .topP1 {
