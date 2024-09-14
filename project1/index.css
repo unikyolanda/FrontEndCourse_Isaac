@@ -309,9 +309,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  body {
-    background-color: tomato;
-  }
   header {
     display: flex;
     align-items: center;
