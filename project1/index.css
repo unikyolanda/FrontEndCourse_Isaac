@@ -7,7 +7,6 @@
 body {
   display: block;
   padding-top: 80px;
-  background-color:red;
 }
 
 a {
@@ -58,7 +57,7 @@ header {
 }
 
 .top {
-  background-image: url(/project1/Image/key-visual.jpg);
+  background-image: url(Image/key-visual.jpg);
   height: 580px;
   display: flex;
   flex-direction: column;
@@ -99,7 +98,7 @@ header {
 }
 .second1 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/project1/Image/main1-img.jpg);
+    url(Image/main1-img.jpg);
   background-size: cover;
   background-attachment: fixed;
   width: 100%;
@@ -134,7 +133,7 @@ header {
 
 .second2 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/project1//Image/main2.jpg);
+    url(Image/main2.jpg);
   background-size: cover;
   background-attachment: fixed;
   height: 500px;
@@ -167,7 +166,7 @@ header {
 }
 
 .second3 {
-  background-image: url(/project1/Image/main3.jpg);
+  background-image: url(Image/main3.jpg);
   background-size: cover;
   background-attachment: fixed;
   height: 700px;
@@ -182,7 +181,7 @@ header {
 }
 
 .white {
-  background-image: url(/project1/Image/FE_white.png);
+  background-image: url(Image/FE_white.png);
   background-size: cover;
   height: 420px;
   width: 320px;
@@ -223,7 +222,7 @@ header {
 }
 
 .third {
-  background-image: url(/project1/Image/main4.jpg);
+  background-image: url(Image/main4.jpg);
   height: 700px;
   display: flex;
   flex-direction: column;
