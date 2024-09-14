@@ -338,7 +338,7 @@ footer {
 
   .navbarp {
     cursor: pointer;
-    margin: 15px 30px;
+    margin: auto 10px;
     color: gray;
     font-size: 13px;
   }
