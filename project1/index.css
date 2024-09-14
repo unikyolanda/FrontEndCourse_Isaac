@@ -7,7 +7,6 @@
 body {
   display: block;
   padding-top: 80px;
-  background-color: tomato;
 }
 
 a {
@@ -58,7 +57,7 @@ header {
 }
 
 .top {
-  background-image: url(../Image/key-visual.jpg);
+  background-image: url(Image/key-visual.jpg);
   height: 580px;
   display: flex;
   flex-direction: column;
