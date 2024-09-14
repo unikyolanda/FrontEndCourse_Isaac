@@ -233,6 +233,12 @@ header {
   background-position-x: center;
 }
 
+.frame {
+  padding: 35px 20px 0px 20px;
+  width: 600px;
+  color: white;
+  font-size: 18px;
+}
 #thirdH1 {
   color: white;
   font-size: 30px;
@@ -245,14 +251,15 @@ header {
 }
 #thirdP1 {
   margin: 30px auto;
-
+  text-align: left;
   color: white;
-  font-size: 19px;
+  font-size: 18px;
 }
 #thirdP2 {
   margin-bottom: 100px;
   color: white;
-  font-size: 19px;
+  text-align: left;
+  font-size: 18px;
 }
 
 .goUp {
@@ -299,4 +306,173 @@ footer {
   bottom: 20%;
   right: 0;
   opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  body {
+    background-color: tomato;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    flex-direction: row;
+  }
+
+  .logo {
+    cursor: pointer;
+    margin-left: 4px;
+    width: 110px;
+    align-self: center;
+  }
+  .logo img {
+    width: 10px;
+    height: auto;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbarp {
+    cursor: pointer;
+    margin: 15px 30px;
+    color: gray;
+    font-size: 13px;
+  }
+
+  #navSearch {
+    margin-left: 10px;
+  }
+
+  #navSearch img {
+    width: 20px;
+    height: auto;
+  }
+  .second1,
+  .second2,
+  .second3 {
+    background-attachment: scroll;
+  }
+  .top,
+  .second1,
+  .second2,
+  .second3,
+  .third {
+    min-height: 300px;
+  }
+  .top,
+  .second1,
+  .second2,
+  .second3,
+  .third {
+    background-size: cover;
+    background-position: center;
+  }
+  .second3 {
+    flex-direction: column;
+  }
+  .white {
+    height: 310px;
+    width: 280px;
+    margin: auto auto;
+  }
+
+  .pen img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .second3P {
+    line-height: 20px;
+  }
+
+  .second3button {
+    font-size: 16px;
+    background-color: rgb(26, 216, 211);
+    height: 35px;
+    width: 140px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .third {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(Image/main4.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    background-position-y: bottom;
+    background-position-x: center;
+    word-break: break-all;
+  }
+
+  .frame {
+    padding: 35px 20px 0px 20px;
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-break: break-all;
+  }
+  #thirdH1 {
+    font-size: 30px;
+    margin: 30px auto;
+  }
+  .thirdline {
+    width: 40px;
+    margin: 0 auto;
+  }
+  #thirdP1 {
+    color: white;
+    font-size: 18px;
+    word-break: break-all;
+  }
+  #thirdP2 {
+    text-align: left;
+    font-size: 18px;
+    word-break: break-all;
+  }
+  footer {
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer1 {
+    margin: 6px;
+    font-size: 10;
+  }
+  .footer2 {
+    margin: auto 10px;
+  }
+  .footergroup {
+    display: flex;
+    margin-bottom: 8px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+  .footerimg11 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    align-self: flex-end;
+  }
+  #footercontact {
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-left: 23px;
+  }
 }
