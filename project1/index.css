@@ -47,6 +47,9 @@ header {
   color: gray;
   font-size: 18px;
 }
+.navbarp:hover {
+  color: rgb(26, 216, 211);
+}
 
 #navSearch {
   margin: 0 40px;
@@ -54,6 +57,12 @@ header {
 #navSearch img {
   width: 20px;
   height: auto;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-out;
+}
+
+#navSearch img:hover {
+  transform: scale(1.2, 1.2);
 }
 
 .top {
@@ -96,6 +105,22 @@ header {
   height: 40px;
   transform: rotate(90deg);
 }
+
+#topArrowDown img {
+  height: 40px;
+  animation: float 1.8s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(90deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
 .second1 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(Image/main1-img.jpg);
@@ -129,6 +154,11 @@ header {
   color: rgb(26, 216, 211);
   margin: 0 auto;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+#second1button:hover {
+  margin: 10px auto;
+  transform: scale(1.2, 1.2);
 }
 
 .second2 {
@@ -163,6 +193,11 @@ header {
   color: rgb(26, 216, 211);
   margin: 20px auto;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.second2button:hover {
+  margin: 10px auto;
+  transform: scale(1.2, 1.2);
 }
 
 .second3 {
@@ -220,6 +255,9 @@ header {
   margin-top: 20px;
   cursor: pointer;
 }
+.second3button:hover {
+  color: rgb(229, 244, 244);
+}
 
 .third {
   background-image: url(Image/main4.jpg);
@@ -268,6 +306,12 @@ header {
   align-items: center;
   justify-content: center;
 }
+.goUp img {
+  transition: all 0.3s ease-out;
+}
+.goUp img:hover {
+  transform: scale(1.2, 1.2);
+}
 #upup {
   height: 50px;
 }
@@ -298,6 +342,11 @@ footer {
   height: 33px;
   cursor: pointer;
 }
+
+.footerimg:hover {
+  opacity: 0.7;
+}
+
 .testgo img {
   z-index: 2;
   position: fixed;
@@ -306,6 +355,11 @@ footer {
   bottom: 20%;
   right: 0;
   opacity: 0.8;
+  transition: transform 0.6s ease;
+}
+.testgo img:hover {
+  opacity: 0.6;
+  transform: translateY(-15px);
 }
 
 @media (max-width: 480px) {
