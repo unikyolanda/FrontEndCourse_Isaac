@@ -1,19 +1,3 @@
-document
-  .getElementById("scrollButtonGoUp")
-  .addEventListener("click", function () {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
-  });
-
-document.getElementById("upup").addEventListener("click", function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
 document.getElementById("navSearch").addEventListener("click", function () {
   const searchExpend = document.getElementsByClassName("searchExpend")[0];
   if (searchExpend.style.display === "block") {
@@ -35,7 +19,7 @@ document.getElementById("navSearch").addEventListener("click", function () {
 
 window.addEventListener("load", () => {
   const loadPage = document.querySelector(".loadpage");
-  const loadingImg = document.querySelector(".loading-img"); // 添加這行
+  const loadingImg = document.querySelector(".loading-img");
 
   setTimeout(() => {
     loadPage.classList.add("hide");
@@ -44,3 +28,4 @@ window.addEventListener("load", () => {
     loadingImg.style.animation = "none";
   });
 });
+

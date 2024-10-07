@@ -1,0 +1,561 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font family 還沒用*/
+}
+body {
+  display: block;
+  padding-top: 80px;
+  background-color: rgb(255, 255, 255);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.76);
+  position: fixed;
+  width: 100%;
+  z-index: 4; /* 確保 header 在 searchExpend 上方 */
+  top: 0;
+  height: 85px; /* 確保 header 有固定高度 */
+  flex-direction: row;
+}
+
+.logo {
+  cursor: pointer;
+  margin-left: 60px;
+  width: 140px;
+  align-self: center;
+}
+.logo img {
+  width: 30px;
+  height: auto;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbarp {
+  cursor: pointer;
+  margin: 30px 60px;
+  color: gray;
+  font-size: 18px;
+}
+.navbarp:hover {
+  color: rgb(26, 216, 211);
+}
+
+#navSearch {
+  margin: 0 40px;
+}
+#navSearch img {
+  width: 20px;
+  height: auto;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-out;
+}
+
+#navSearch img:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.toppic {
+  margin-top: 0;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 為了讓子元素絕對定位 */
+  margin-top: 10px;
+  background-image: url(aritcleimg/contact-key.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  animation: chamgeImage 20s infinite;
+}
+@keyframes chamgeImage {
+  0% {
+    background-image: url(aritcleimg/contact-key.jpg);
+  }
+  33% {
+    background-image: url(aritcleimg/rotate-img-1.jpg);
+  }
+  66% {
+    background-image: url(aritcleimg/rotate-img-2.jpg);
+  }
+  100% {
+    background-image: url(aritcleimg/contact-key.jpg);
+  }
+}
+.toptext {
+  font-size: 24px;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.7);
+  padding: 6px;
+  border-radius: 5px;
+  letter-spacing: 10px;
+  padding-left: 23px;
+  z-index: 2; /* 確保圖片在文字下面 */
+}
+
+.toppic:hover .toptext {
+  opacity: 0.6;
+}
+
+.fourOptions {
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 80px;
+  font-size: 20px;
+  box-shadow: 0 0 15px rgba(199, 199, 199, 0.8);
+  color: rgb(123, 121, 121);
+}
+
+#allopt,
+#opt1,
+#opt2,
+#opt3 {
+  cursor: pointer;
+}
+
+#allopt:hover,
+#opt1:hover,
+#opt2:hover,
+#opt3:hover {
+  opacity: 0.6;
+}
+
+#articlemain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 70px;
+  flex-wrap: wrap;
+}
+
+.article {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(26, 216, 211);
+  padding: 20px 20px;
+  margin: 10px;
+  display: block;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.location:hover {
+  opacity: 0.6;
+}
+
+.locationIcon {
+  width: 17px;
+  height: 23px;
+}
+.locationText {
+  font-size: 16px;
+  text-align: center;
+  color: rgb(125, 125, 125);
+  line-height: 10px;
+}
+.blockContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.articleImgFrame {
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+  margin: 10px auto;
+}
+.articleImg {
+  background-image: url(aritcleimg/rotate-img-1.jpg);
+  width: 200px;
+  height: 150px;
+  max-width: 100%;
+  max-height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.articleImg:hover {
+  transform: scale(1.2, 1.2);
+}
+.academy {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 0px;
+  color: rgb(26, 216, 211);
+  cursor: pointer;
+  width: 200px;
+  line-height: 38px;
+  margin: 5px auto;
+}
+.academy:hover {
+  opacity: 0.6;
+}
+
+.articleDetail {
+  line-height: 24px;
+  letter-spacing: 0px;
+  padding: 10px 30px;
+  text-align: center;
+  width: 300px;
+  color: rgb(45, 45, 45);
+}
+.articleDetail:hover {
+  opacity: 0.7;
+}
+.rd {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 240px;
+  margin: 10px auto;
+}
+.readmore {
+  color: rgb(26, 216, 211);
+  width: 120px;
+  text-align: right;
+  margin-left: 28px;
+  transition: all 0.3s ease-in-out;
+}
+.rd:hover .readmore {
+  margin-left: 10px;
+}
+.rd:hover .arrowleft {
+  margin-left: 46px;
+}
+
+.arrowleft {
+  background-image: url(aritcleimg/arrow-right-one.png);
+  background-size: cover;
+  background-position: center;
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+.blockContent:hover {
+  opacity: 0.6;
+}
+
+#topArrowDown {
+  display: block;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#topArrowDown img {
+  height: 40px;
+  transform: rotate(90deg);
+}
+
+#topArrowDown img {
+  height: 40px;
+  animation: float 1.8s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(90deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+.goUp {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.goUp img {
+  transition: all 0.3s ease-out;
+}
+.goUp img:hover {
+  transform: scale(1.2, 1.2);
+}
+#upup {
+  height: 50px;
+}
+footer {
+  background-color: rgb(231, 231, 231);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.footer1 {
+  color: rgb(105, 104, 104);
+  font-size: 15;
+  margin: 20px;
+}
+.footer2 {
+  color: rgb(26, 216, 211);
+  font-size: 15;
+  margin: auto 10px;
+}
+.footergroup {
+  display: flex;
+  margin: 20px;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+.footerimg {
+  height: 33px;
+  cursor: pointer;
+}
+
+.footerimg:hover {
+  opacity: 0.7;
+}
+
+.testgo img {
+  z-index: 2;
+  position: fixed;
+  width: 78px;
+  height: 69px;
+  bottom: 20%;
+  right: 0;
+  opacity: 0.8;
+  transition: transform 0.6s ease;
+}
+.testgo img:hover {
+  opacity: 0.6;
+  transform: translateY(-15px);
+}
+/*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+.searchExpend {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: calc(100vh - 85px);
+  top: 85px;
+  z-index: 3;
+  display: none;
+  margin-top: 0;
+}
+#searchFrame {
+  background-color: rgb(238, 237, 237);
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  height: calc((100vh - 85px) / 2);
+  z-index: 5;
+  align-items: center;
+}
+.searchbar {
+  color: rgb(26, 216, 211);
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 3px;
+  font-size: 22px;
+  margin-top: 3vh;
+  z-index: 5;
+}
+#searchform {
+  width: 60%;
+  height: 8vh;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin-top: 2vh;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#searchinput {
+  background-color: white;
+  align-self: center;
+  padding: 3%;
+  width: 80%;
+  height: 70%;
+  border: 0px solid white;
+  letter-spacing: 12px;
+  justify-content: center;
+}
+.microphone {
+  background: url(../Image/microphone.svg);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.searchsearch {
+  background: url(../Image/FE_search_green.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+
+#searchSpace {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: calc(50vh - 42.5px);
+}
+/*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+
+@media (max-width: 480px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    flex-direction: row;
+  }
+
+  .logo {
+    cursor: pointer;
+    margin-left: 4px;
+    width: 110px;
+    align-self: center;
+  }
+  .logo img {
+    width: 10px;
+    height: auto;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbarp {
+    cursor: pointer;
+    margin: auto 10px;
+    color: gray;
+    font-size: 13px;
+  }
+
+  #navSearch {
+    margin-left: 10px;
+  }
+
+  #navSearch img {
+    width: 20px;
+    height: auto;
+  }
+
+  footer {
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer1 {
+    margin: 6px;
+    font-size: 10;
+  }
+  .footer2 {
+    margin: auto 10px;
+  }
+  .footergroup {
+    display: flex;
+    margin-bottom: 8px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+  .footerimg11 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    align-self: flex-end;
+  }
+  #footercontact {
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-left: 23px;
+  }
+}
+
+.loadpage {
+  position: fixed;
+  display: block;
+  background-color: rgb(26, 216, 211);
+  width: 100%;
+  height: 120vh;
+  z-index: 10;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease, opacity 1s ease; /* 添加過渡效果 */
+}
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100vh;
+  background-color: aliceblue;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadpage.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.loading-img {
+  background: url(../Image/FE_logo-4.png);
+  background-size: cover;
+  width: 300px;
+  height: 130px;
+  animation: loadingImgUpDown 2.5s ease 0s infinite alternate;
+  z-index: 10;
+}
+
+@keyframes loadingImgUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
