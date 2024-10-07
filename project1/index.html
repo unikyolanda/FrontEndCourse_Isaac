@@ -23,8 +23,9 @@
       <div>
         <p class="topP1" id="topP11">FRONT-ENTER</p>
         <p class="topP1" id="topP12">前端轉職資訊</p>
-        <div id="topArrowDown"><img src="Image/next.svg" /></div>
-        <!-- 不能用 -->
+        <div id="topArrowDown">
+          <img id="scrollButtonGoUp" src="Image/next.svg" />
+        </div>
       </div>
     </section>
 
@@ -39,7 +40,6 @@
             可以點擊按鈕測測看哦！
           </p>
           <button id="second1button">測驗 GO</button>
-          ]
         </div>
 
         <div class="second2">
@@ -75,22 +75,25 @@
         </div>
       </div>
       <div class="third">
-        <p id="thirdH1">關於</p>
-        <div class="thirdline"></div>
-        <p id="thirdP1">
-          近年來，社會對於軟體工程師的需求急速增加，全台各地的補習也如雨後<br />春筍般開業，
-          然而人的時間有限，要如何找到適合自己的學習環境？
-        </p>
-        <p id="thirdP2">
-          「Front-Enter」特別針對前端工程的學習資源，進行蒐集、分類， 期待<br />讓有志成為前端工程師的人，找到最適合自己的學習環境。
-        </p>
+        <div class="frame">
+          <p id="thirdH1">關於</p>
+          <div class="thirdline"></div>
+          <p id="thirdP1">
+            近年來，社會對於軟體工程師的需求急速增加，全台各地的補習也如雨後春筍般開業，
+            然而人的時間有限，要如何找到適合自己的學習環境？
+          </p>
+          <p id="thirdP2">
+            「Front-Enter」特別針對前端工程的學習資源，進行蒐集、分類，
+            期待讓有志成為前端工程師的人，找到最適合自己的學習環境。
+          </p>
+        </div>
       </div>
     </main>
     <section class="goUp">
       <img src="Image/FE_TOP.png" id="upup" />
     </section>
     <footer>
-      <div class="footer1"><p>聯絡</p></div>
+      <div class="footer1" id="footercontact"><p>聯絡</p></div>
       <div class="footergroup">
         <p class="footer2">M</p>
         <p class="footer1">0917-218-567</p>
@@ -99,10 +102,30 @@
         <p class="footer2">E</p>
         <p class="footer1">aaa24295234@gmail.com</p>
       </div>
-      <div>
-        <img class="footerimg" src="Image/new-facebook-blue.svg" />
-        <img class="footerimg" src="Image/FE_line.png" />
+      <div class="footerimg11">
+        <a href="https://www.facebook.com/yize.huang" target="_blank"
+          ><img class="footerimg" src="Image/new-facebook-blue.svg"
+        /></a>
+        <a href="https://line.me/ti/p/gffPB8S-Vw" target="_blank"
+          ><img class="footerimg" src="Image/FE_line.png"
+        /></a>
       </div>
     </footer>
+    <script src="index.js"></script>
+    <div class="searchExpend">
+      <div id="searchFrame">
+        <p class="searchbar">search</p>
+        <form id="searchform">
+          <input id="searchinput" type="text" />
+          <div class="microphone"></div>
+          <div class="searchsearch"></div>
+        </form>
+      </div>
+      <div id="searchSpace"></div>
+    </div>
+    <div class="loadpage">
+      <div class="loading"><div class="loading-img"></div></div>
+      <div class="loadingBtm"></div>
+    </div>
   </body>
 </html>

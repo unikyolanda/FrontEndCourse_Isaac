@@ -18,11 +18,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.76);
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 4; /* 確保 header 在 searchExpend 上方 */
   top: 0;
+  height: 85px; /* 確保 header 有固定高度 */
   flex-direction: row;
 }
 
@@ -47,6 +48,9 @@ header {
   color: gray;
   font-size: 18px;
 }
+.navbarp:hover {
+  color: rgb(26, 216, 211);
+}
 
 #navSearch {
   margin: 0 40px;
@@ -54,6 +58,12 @@ header {
 #navSearch img {
   width: 20px;
   height: auto;
+  transform: scale(1, 1);
+  transition: all 0.3s ease-out;
+}
+
+#navSearch img:hover {
+  transform: scale(1.2, 1.2);
 }
 
 .top {
@@ -96,6 +106,22 @@ header {
   height: 40px;
   transform: rotate(90deg);
 }
+
+#topArrowDown img {
+  height: 40px;
+  animation: float 1.8s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(90deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
 .second1 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(Image/main1-img.jpg);
@@ -129,6 +155,11 @@ header {
   color: rgb(26, 216, 211);
   margin: 0 auto;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+#second1button:hover {
+  margin: 10px auto;
+  transform: scale(1.2, 1.2);
 }
 
 .second2 {
@@ -163,6 +194,11 @@ header {
   color: rgb(26, 216, 211);
   margin: 20px auto;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.second2button:hover {
+  margin: 10px auto;
+  transform: scale(1.2, 1.2);
 }
 
 .second3 {
@@ -220,6 +256,9 @@ header {
   margin-top: 20px;
   cursor: pointer;
 }
+.second3button:hover {
+  color: rgb(229, 244, 244);
+}
 
 .third {
   background-image: url(Image/main4.jpg);
@@ -233,6 +272,12 @@ header {
   background-position-x: center;
 }
 
+.frame {
+  padding: 35px 20px 0px 20px;
+  width: 600px;
+  color: white;
+  font-size: 18px;
+}
 #thirdH1 {
   color: white;
   font-size: 30px;
@@ -245,14 +290,15 @@ header {
 }
 #thirdP1 {
   margin: 30px auto;
-
+  text-align: left;
   color: white;
-  font-size: 19px;
+  font-size: 18px;
 }
 #thirdP2 {
   margin-bottom: 100px;
   color: white;
-  font-size: 19px;
+  text-align: left;
+  font-size: 18px;
 }
 
 .goUp {
@@ -260,6 +306,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.goUp img {
+  transition: all 0.3s ease-out;
+}
+.goUp img:hover {
+  transform: scale(1.2, 1.2);
 }
 #upup {
   height: 50px;
@@ -291,6 +343,11 @@ footer {
   height: 33px;
   cursor: pointer;
 }
+
+.footerimg:hover {
+  opacity: 0.7;
+}
+
 .testgo img {
   z-index: 2;
   position: fixed;
@@ -299,4 +356,301 @@ footer {
   bottom: 20%;
   right: 0;
   opacity: 0.8;
+  transition: transform 0.6s ease;
+}
+.testgo img:hover {
+  opacity: 0.6;
+  transform: translateY(-15px);
+}
+/*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+.searchExpend {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: calc(100vh - 85px);
+  top: 85px;
+  z-index: 3;
+  display: none;
+  margin-top: 0;
+}
+#searchFrame {
+  background-color: rgb(238, 237, 237);
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  height: calc((100vh - 85px) / 2);
+  z-index: 5;
+  align-items: center;
+}
+.searchbar {
+  color: rgb(26, 216, 211);
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 3px;
+  font-size: 22px;
+  margin-top: 3vh;
+  z-index: 5;
+}
+#searchform {
+  width: 60%;
+  height: 8vh;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin-top: 2vh;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#searchinput {
+  background-color: white;
+  align-self: center;
+  padding: 3%;
+  width: 80%;
+  height: 70%;
+  border: 0px solid white;
+  letter-spacing: 12px;
+  justify-content: center;
+}
+.microphone {
+  background: url(Image/microphone.svg);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.searchsearch {
+  background: url(Image/FE_search_green.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+
+#searchSpace {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: calc(50vh - 42.5px);
+}
+/*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+
+@media (max-width: 480px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    flex-direction: row;
+  }
+
+  .logo {
+    cursor: pointer;
+    margin-left: 4px;
+    width: 110px;
+    align-self: center;
+  }
+  .logo img {
+    width: 10px;
+    height: auto;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbarp {
+    cursor: pointer;
+    margin: auto 10px;
+    color: gray;
+    font-size: 13px;
+  }
+
+  #navSearch {
+    margin-left: 10px;
+  }
+
+  #navSearch img {
+    width: 20px;
+    height: auto;
+  }
+  .second1,
+  .second2,
+  .second3 {
+    background-attachment: scroll;
+  }
+  .top,
+  .second1,
+  .second2,
+  .second3,
+  .third {
+    min-height: 300px;
+  }
+  .top,
+  .second1,
+  .second2,
+  .second3,
+  .third {
+    background-size: cover;
+    background-position: center;
+  }
+  .second3 {
+    flex-direction: column;
+  }
+  .white {
+    height: 310px;
+    width: 280px;
+    margin: auto auto;
+  }
+
+  .pen img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .second3P {
+    line-height: 20px;
+  }
+
+  .second3button {
+    font-size: 16px;
+    background-color: rgb(26, 216, 211);
+    height: 35px;
+    width: 140px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .third {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(Image/main4.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    background-position-y: bottom;
+    background-position-x: center;
+    word-break: break-all;
+  }
+
+  .frame {
+    padding: 35px 20px 0px 20px;
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-break: break-all;
+  }
+  #thirdH1 {
+    font-size: 30px;
+    margin: 30px auto;
+  }
+  .thirdline {
+    width: 40px;
+    margin: 0 auto;
+  }
+  #thirdP1 {
+    color: white;
+    font-size: 18px;
+    word-break: break-all;
+  }
+  #thirdP2 {
+    text-align: left;
+    font-size: 18px;
+    word-break: break-all;
+  }
+  footer {
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer1 {
+    margin: 6px;
+    font-size: 10;
+  }
+  .footer2 {
+    margin: auto 10px;
+  }
+  .footergroup {
+    display: flex;
+    margin-bottom: 8px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+  .footerimg11 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    align-self: flex-end;
+  }
+  #footercontact {
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-left: 23px;
+  }
+}
+
+.loadpage {
+  position: fixed;
+  display: block;
+  background-color: rgb(26, 216, 211);
+  width: 100%;
+  height: 120vh;
+  z-index: 10;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease, opacity 1s ease; /* 添加過渡效果 */
+}
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100vh;
+  background-color: aliceblue;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadpage.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.loading-img {
+  background: url(Image/FE_logo-4.png);
+  background-size: cover;
+  width: 300px;
+  height: 130px;
+  animation: loadingImgUpDown 2.5s ease 0s infinite alternate;
+  z-index: 10;
+}
+
+@keyframes loadingImgUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
