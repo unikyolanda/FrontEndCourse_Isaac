@@ -35,6 +35,8 @@ document.getElementById("navSearch").addEventListener("click", function () {
 
 window.addEventListener("load", () => {
   const loadPage = document.querySelector(".loadpage");
+  const loadingImg = document.querySelector(".loading-img"); // 添加這行
+
   setTimeout(() => {
     loadPage.classList.add("hide");
   }, 1000);
