@@ -1,12 +1,68 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchinput");
+  const microphoneButton = document.querySelector(".microphone");
+
+  if (!searchInput || !microphoneButton) {
+    console.error(
+      "Required elements not found. Please check your HTML structure."
+    );
+    return;
+  }
+
+  if ("webkitSpeechRecognition" in window) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = "zh-TW";
+
+    let isRecognitionActive = false;
+
+    recognition.onstart = function () {
+      isRecognitionActive = true;
+      microphoneButton.classList.add("listening");
+    };
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      searchInput.value = transcript;
+    };
+
+    recognition.onerror = function (event) {
+      console.error("Speech recognition error", event.error);
+      isRecognitionActive = false;
+      microphoneButton.classList.remove("listening");
+    };
+
+    recognition.onend = function () {
+      isRecognitionActive = false;
+      microphoneButton.classList.remove("listening");
+    };
+
+    microphoneButton.addEventListener("click", function () {
+      if (isRecognitionActive) {
+        recognition.stop();
+      } else {
+        try {
+          recognition.start();
+        } catch (error) {
+          console.error("Error starting speech recognition:", error);
+        }
+      }
+    });
+  } else {
+    console.log("Web Speech API is not supported in this browser");
+    microphoneButton.style.display = "none";
+  }
+});
+//........
 fetch("../front-enter-export.json")
   .then((response) => response.json())
   .then((data) => {
     const articlesContainer = document.getElementById("articlemain");
 
     function displayArticles(filter, filterType) {
-      articlesContainer.innerHTML = ""; // 清空當前顯示的文章
+      articlesContainer.innerHTML = "";
 
-      let articleDisplayed = false; // 用來檢查是否有文章被顯示
+      let articleDisplayed = false;
 
       for (const articleId in data.article) {
         const article = data.article[articleId];
@@ -19,20 +75,17 @@ fetch("../front-enter-export.json")
 
         let shouldDisplay = false;
 
-        // 根據過濾條件篩選
         if (filterType === "location") {
           shouldDisplay = filter === "all" || city === filter;
         } else if (filterType === "classType") {
           shouldDisplay =
             filter === "all" || classType === filter || teachWay === filter;
         } else if (filterType === "keyword") {
-          // 檢查 name 是否包含關鍵字
           shouldDisplay = name.toLowerCase().includes(filter.toLowerCase());
         }
 
-        // 如果符合條件，顯示文章
         if (shouldDisplay) {
-          articleDisplayed = true; // 設置為已顯示文章
+          articleDisplayed = true;
           const articleDiv = document.createElement("div");
           articleDiv.className = "article";
 
@@ -55,12 +108,10 @@ fetch("../front-enter-export.json")
         }
       }
 
-      // 如果沒有任何文章符合條件，顯示所有文章
       if (!articleDisplayed) {
         displayArticles("all", "classType");
       }
 
-      // 重新為每個城市元素添加點擊事件
       document.querySelectorAll(".cityFilter").forEach((cityElement) => {
         cityElement.addEventListener("click", function () {
           const selectedCity = this.getAttribute("data-city");
@@ -69,10 +120,8 @@ fetch("../front-enter-export.json")
       });
     }
 
-    // 初始顯示所有文章
     displayArticles("all", "classType");
 
-    // 點擊分類過濾
     allopt.addEventListener("click", () => displayArticles("all", "classType"));
     opt1.addEventListener("click", () =>
       displayArticles("小班制", "classType")
@@ -84,52 +133,45 @@ fetch("../front-enter-export.json")
       displayArticles("一對一", "classType")
     );
 
-    // 關鍵字搜尋功能
     const searchForm = document.getElementById("searchform");
     const searchInput = document.getElementById("searchinput");
     const innerSearch = document.getElementById("innerSearch");
 
-    // 加入 loading page 的處理
     const loadPage = document.querySelector(".loadpage");
     const loadingImg = document.querySelector(".loading-img");
 
     function performSearch() {
       const searchTerm = searchInput.value;
 
-      // 顯示 loading page
       loadPage.classList.remove("hide");
       loadingImg.style.animation = "";
 
       setTimeout(() => {
         if (searchTerm) {
-          displayArticles(searchTerm, "keyword"); // 根據關鍵字進行過濾
+          displayArticles(searchTerm, "keyword");
         } else {
-          displayArticles("all", "classType"); // 如果輸入框是空的，顯示所有文章
+          displayArticles("all", "classType");
         }
 
-        // 隱藏 loading page
         loadPage.classList.add("hide");
 
         loadPage.addEventListener("transitionend", () => {
           loadingImg.style.animation = "none";
         });
 
-        // 搜索完成後自動關閉 searchExpend
         const searchExpend = document.getElementsByClassName("searchExpend")[0];
-        searchExpend.style.display = "none"; // 關閉搜索展開區域
+        searchExpend.style.display = "none";
         console.log("搜索完成，searchExpend 被關閉");
-      }, 1000); // 模擬一秒的加載時間
+      }, 1000);
     }
 
-    // 綁定表單提交事件 (用戶按下回車)
     searchForm.addEventListener("submit", (e) => {
-      e.preventDefault(); // 防止表單提交刷新頁面
-      performSearch(); // 執行搜索
+      e.preventDefault();
+      performSearch();
     });
 
-    // 綁定點擊 innerSearch 的事件
     innerSearch.addEventListener("click", () => {
-      performSearch(); // 點擊搜尋按鈕執行搜索
+      performSearch();
     });
   })
   .catch((error) => {

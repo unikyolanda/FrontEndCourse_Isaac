@@ -416,7 +416,38 @@ footer {
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
+
+/* 只在 "listening" 時才有 after 效果 */
+.microphone.listening::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid rgb(26, 216, 211);
+  opacity: 1;
+  animation: pulse 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
 .searchsearch {
   background: url(../Image/FE_search_green.png);
   background-repeat: no-repeat;
