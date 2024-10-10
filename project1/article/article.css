@@ -465,6 +465,19 @@ footer {
 /*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
 
 @media (max-width: 480px) {
+  .article {
+    border-width: 1px;
+    border-style: none;
+    border-bottom-style: solid;
+
+    border-color: rgb(26, 216, 211);
+    padding: 20px 20px;
+    margin: 20px;
+    display: block;
+    height: 480px;
+    width: 350px;
+  }
+
   header {
     display: flex;
     align-items: center;
