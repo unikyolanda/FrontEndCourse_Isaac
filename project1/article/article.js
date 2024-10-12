@@ -72,6 +72,7 @@ fetch("../front-enter-export.json")
         const classType = article.classType;
         const teachWay = article.teachWay;
         const img = article.squareUrl;
+        const uid = article.uid;
 
         let shouldDisplay = false;
 
@@ -94,7 +95,7 @@ fetch("../front-enter-export.json")
               <img src="aritcleimg/location_icon_one.png" class="locationIcon" />
               <p class="locationText cityFilter" data-city="${city}">${city}</p>
             </div>
-           <a href="../ content/content.html?uid=${articleId}" > 
+           <a href="../ content/content.html?uid=${uid}" > 
            <div class="blockContent">
               <div class="articleImgFrame"><img class="articleImg" src="${img}"/></div>
               <h1 class="academy">${name}</h1>

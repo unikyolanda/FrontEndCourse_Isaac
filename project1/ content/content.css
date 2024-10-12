@@ -1,3 +1,31 @@
+.showPics {
+  position: fixed;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  background-color: rgb(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pics {
+  width: 750px;
+  height: 550px;
+  border-radius: 4px;
+}
+
+.arroww {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+/* ........................................... */
+
 .toppic {
   margin-top: 0;
   width: 100%;
