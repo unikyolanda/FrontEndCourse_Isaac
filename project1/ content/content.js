@@ -1,99 +1,102 @@
-fetch("../front-enter-export.json")
-  .then((response) => response.json())
-  .then((data) => {
-    const mainContainer = document.getElementById("mainContainer");
-    const toppic1 = document.getElementById("toppic1");
+document.addEventListener("DOMContentLoaded", function () {
+  // 從 URL 獲取 uid 參數
+  function getUidFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get("uid");
+  }
 
-    function aNewWeb() {
-      console.log(data.article["-LNiP-cd31m_XrDZJxdl"]);
-      toppic1.innerHTML = "";
-
-      mainContainer.innerHTML = "";
-
-      const article = data.article["-LNiP-cd31m_XrDZJxdl"];
-
-      const name = article.name;
-      const topic = article.topic;
-      const content = article.content;
-
-      const city = article.city;
-      const classType = article.classType;
-      const teachWay = article.teachWay;
-      const totalDay = article.totalDay;
-      const weekHour = article.weekHour;
-      const technology = article.technology;
-      const mail = article.mail;
-      const phone = article.phone;
-
-      const rectangleUrl = article.rectangleUrl;
-      const img = article.squareUrl;
-      toppic1.innerHTML = `  <div class="toppic">
-      <p class="toptext">${name}</p>
-    </div>`;
-
-    const toppicDiv = toppic1.querySelector('.toppic');
-    toppicDiv.style.backgroundImage = `url(${rectangleUrl})`;
-
-      mainContainer.innerHTML = `
-      <div class="left">
-      <img class="mainPic" id="pic1" src="contentImg/11.jpg" />
-      <img class="mainPic canceled" id="pic2" src="contentImg/22.jpg" />
-      <img class="mainPic canceled" id="pic3" src="contentImg/33.jpg" />
-      <img class="mainPic canceled" id="pic4" src="contentImg/44.jpg" />
-      <img class="mainPic canceled" id="pic4" src="contentImg/55.jpg" />
-
-    </div>
-    <div class="right">
-      <h2 class="title">${topic}</h2>
-      <p class="mainContent">
-      ${content}
-  
-      </p>
-      <h1 class="conclusion">整理</h1>
-      <div class="underLine"></div>
-      <div class="detail">
-        <div class="box">
-          <p class="qq">城市</p>
-          <p class="aa">${city}</p>
-        </div>
-        <div class="box">
-          <p class="qq">班制</p>
-          <p class="aa">${classType}</p>
-        </div>
-        <div class="box">
-          <p class="qq">教法</p>
-          <p class="aa">${teachWay}</p>
-        </div>
-        <div class="box">
-          <p class="qq">天數</p>
-          <p class="aa">${totalDay}</p>
-        </div>
-        <div class="box">
-          <p class="qq">週時</p>
-          <p class="aa">${weekHour}</p>
-        </div>
-        <div class="box">
-          <p class="qq">技術</p>
-          <p class="aa">${technology}</p>
-        </div>
-        <div class="box">
-          <p class="qq">信箱</p>
-          <p class="aa">${mail}</p>
-        </div>
-        <div class="box">
-          <p class="qq">電話</p>
-          <p class="aa">${phone}</p>
-        </div>
-      </div>
-    </div>
-    `;
+  // 加載並顯示文章內容
+  function loadArticleContent() {
+    const uid = getUidFromUrl();
+    if (!uid) {
+      console.error("沒有指定文章 UID");
+      return;
     }
-    aNewWeb();
-  })
-  .catch((error) => {
-    console.error("Error fetching the JSON data:", error);
-  });
 
+    fetch("../front-enter-export.json")
+      .then((response) => response.json())
+      .then((data) => {
+        // 在 data.article 對象中尋找匹配 uid 的文章
+        const article = Object.values(data.article).find(
+          (article) => article.uid === uid
+        );
+
+        if (!article) {
+          console.error("找不到指定 UID 的文章");
+          return;
+        }
+
+        const mainContainer = document.getElementById("mainContainer");
+        const toppic1 = document.getElementById("toppic1");
+
+        // 填充頂部圖片和標題
+        toppic1.innerHTML = `
+          <div class="toppic" style="background-image: url(${article.rectangleUrl})">
+            <p class="toptext">${article.name}</p>
+          </div>`;
+
+        // 填充主要內容
+        mainContainer.innerHTML = `
+          <div class="left">
+            <img class="mainPic" id="pic1" src="contentImg/11.jpg" />
+            <img class="mainPic canceled" id="pic2" src="contentImg/22.jpg" />
+            <img class="mainPic canceled" id="pic3" src="contentImg/33.jpg" />
+            <img class="mainPic canceled" id="pic4" src="contentImg/44.jpg" />
+            <img class="mainPic canceled" id="pic4" src="contentImg/55.jpg" />
+          </div>
+          <div class="right">
+            <h2 class="title">${article.topic}</h2>
+            <p class="mainContent">${article.content}</p>
+            <h1 class="conclusion">整理</h1>
+            <div class="underLine"></div>
+            <div class="detail">
+              <div class="box">
+                <p class="qq">城市</p>
+                <p class="aa">${article.city}</p>
+              </div>
+              <div class="box">
+                <p class="qq">班制</p>
+                <p class="aa">${article.classType}</p>
+              </div>
+              <div class="box">
+                <p class="qq">教法</p>
+                <p class="aa">${article.teachWay}</p>
+              </div>
+              <div class="box">
+                <p class="qq">天數</p>
+                <p class="aa">${article.totalDay}</p>
+              </div>
+              <div class="box">
+                <p class="qq">週時</p>
+                <p class="aa">${article.weekHour}</p>
+              </div>
+              <div class="box">
+                <p class="qq">技術</p>
+                <p class="aa">${article.technology}</p>
+              </div>
+              <div class="box">
+                <p class="qq">費用</p>
+                <p class="aa">${article.fee}</p>
+              </div>
+              <div class="box">
+                <p class="qq">信箱</p>
+                <p class="aa">${article.mail}</p>
+              </div>
+              <div class="box">
+                <p class="qq">電話</p>
+                <p class="aa">${article.phone}</p>
+              </div>
+            </div>
+          </div>`;
+      })
+      .catch((error) => {
+        console.error("Error fetching the JSON data:", error);
+      });
+  }
+
+  // 頁面加載時執行
+  loadArticleContent();
+});
 //........
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchinput");

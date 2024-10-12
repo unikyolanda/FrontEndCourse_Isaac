@@ -94,14 +94,16 @@ fetch("../front-enter-export.json")
               <img src="aritcleimg/location_icon_one.png" class="locationIcon" />
               <p class="locationText cityFilter" data-city="${city}">${city}</p>
             </div>
-            <div class="blockContent">
+           <a href="../ content/content.html?uid=${articleId}" > 
+           <div class="blockContent">
               <div class="articleImgFrame"><img class="articleImg" src="${img}"/></div>
               <h1 class="academy">${name}</h1>
               <p class="articleDetail">${preface}</p>
               <div class="rd">
-                <div class="readmore">readmore</div>
-                <div class="arrowleft"></div>
-              </div>
+              <div class="readmore">readmore</div>
+              <div class="arrowleft"></div>
+            </div>
+            </a>
             </div>
           `;
           articlesContainer.appendChild(articleDiv);
