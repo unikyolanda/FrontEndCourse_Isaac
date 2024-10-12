@@ -161,6 +161,27 @@ main {
 }
 
 @media (max-width: 480px) {
+  .showPics .mainPic {
+    width: auto;
+    height: auto;
+    max-width: none; /* Override any hover-based max-width rules */
+    transition: none; /* Ensure no hover-based resizing occurs in the modal */
+  }
+  .mainPic:hover {
+    width: auto;
+    height: auto;
+  }
+  .toptext {
+    font-size: 12px;
+  }
+  .toppic {
+    height: 200px;
+  }
+  .pics {
+    width: calc(750px * 0.4);
+    height: calc(550px * 0.4);
+  }
+
   main {
     flex-direction: column;
     align-items: center;
@@ -182,10 +203,15 @@ main {
     width: 90%;
     height: auto;
     max-width: calc(400px * 0.8);
+    transition: none;
   }
 
-  .canceled {
+  #pic2,
+  #pic3,
+  #pic4,
+  #pic5 {
     display: none;
+    transition: none;
   }
 
   .mainContent {
@@ -210,6 +236,11 @@ main {
   .detail {
     width: 100%;
     padding: 10px 0;
+  }
+  .aa,
+  .qq {
+    font-size: 10px;
+    line-height: 20px;
   }
 }
 
