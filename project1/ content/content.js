@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   // 圖片彈窗相關代碼
+
+  const showPics = document.getElementsByClassName("showPics")[0];
+  const arrowwleft = document.querySelector(".showPics .arroww:first-of-type");
+  const arrowwright = document.querySelector(".showPics .arroww:last-of-type");
+  const pics = document.querySelector(".showPics .pics");
+
   let currentPicIndex = 0;
   const picsArray = [
     "contentImg/11.jpg",
@@ -9,44 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
     "contentImg/55.jpg",
   ];
 
-  const showPics = document.getElementsByClassName("showPics")[0];
-  const picsElement = document.querySelector(".showPics .pics");
-  const leftArrow = document.querySelector(".showPics .arroww:first-of-type");
-  const rightArrow = document.querySelector(".showPics .arroww:last-of-type");
-
-  function setupImagePopup() {
+  function popUpPics() {
     const mainPicImages = document.getElementsByClassName("mainPic");
-
     Array.from(mainPicImages).forEach((image, index) => {
       image.addEventListener("click", function () {
-        console.log("圖片被點擊: ", index);
+        console.log("sss", index);
         currentPicIndex = index;
-        picsElement.src = picsArray[currentPicIndex];
+        pics.src = picsArray[currentPicIndex];
         showPics.style.display = "flex";
       });
     });
   }
 
-  // 右箭頭點擊事件
-  rightArrow.addEventListener("click", function () {
+  arrowwleft.addEventListener("click", function () {
+    currentPicIndex = (currentPicIndex - 1) % picsArray.length;
+    pics.src = picsArray[currentPicIndex];
+  });
+  arrowwright.addEventListener("click", function () {
     currentPicIndex = (currentPicIndex + 1) % picsArray.length;
-    picsElement.src = picsArray[currentPicIndex];
+    pics.src = picsArray[currentPicIndex];
   });
 
-  // 左箭頭點擊事件
-  leftArrow.addEventListener("click", function () {
-    currentPicIndex =
-      (currentPicIndex - 1 + picsArray.length) % picsArray.length;
-    picsElement.src = picsArray[currentPicIndex];
-  });
-
-  // 背景點擊事件以隱藏彈窗
   showPics.addEventListener("click", function (e) {
     if (e.target === showPics) {
       showPics.style.display = "none";
     }
   });
-
   // 文章加載相關代碼
   function getUidFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -136,7 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>`;
 
         // 設置圖片彈窗功能
-        setupImagePopup();
+
+        popUpPics();
       })
       .catch((error) => {
         console.error("Error fetching the JSON data:", error);

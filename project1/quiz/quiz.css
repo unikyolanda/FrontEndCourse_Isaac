@@ -1,0 +1,105 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: brown;
+}
+
+#quiz {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: brown;
+  position: relative;
+  z-index: 30;
+}
+
+.question {
+  display: none; /* 默認隱藏所有問題 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 450px;
+  opacity: 0.8;
+  background-color: rgb(26, 216, 211);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  z-index: 31;
+  text-align: center; /* 確保文字居中 */
+}
+
+.question.active {
+  display: flex; /* 顯示當前活動的問題 */
+}
+
+.quizOption {
+  color: rgb(26, 216, 211);
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+  padding: 0px 23px;
+  margin: 10px auto; /* 修改這裡，使按鈕水平居中 */
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  line-height: 50px;
+  cursor: pointer;
+  border: none;
+  display: block; /* 修改這裡，使按鈕垂直排列 */
+}
+
+.quizOption:hover {
+  color: white;
+  background-color: rgb(179, 219, 218);
+}
+
+#starth1 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px; /* 添加底部間距 */
+}
+
+#starthp {
+  color: white;
+  font-size: 16px;
+  padding: 0 50px;
+  text-align: center; /* 修改為居中 */
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+
+.question h2 {
+  color: white;
+  font-size: 18px;
+  padding: 20px 50px 0px 50px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 30px;
+  margin-bottom: 10px; /* 添加底部間距 */
+}
+
+.question p {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px; /* 添加底部間距 */
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
