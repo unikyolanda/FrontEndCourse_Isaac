@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>課程推薦測驗</title>
     <link rel="stylesheet" href="quiz.css" />
-    <title>簡單測驗</title>
   </head>
   <body>
     <div id="quiz">
@@ -13,7 +13,10 @@
         <p id="starthp">
           點選「開始測驗」後，系統會根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的適合度。
         </p>
-        <button class="quizOption" onclick="startQuiz()">開始測驗</button>
+        <p id="loading">正在加載課程數據，請稍候...</p>
+        <button id="startBtn" class="quizOption" onclick="startQuiz()" disabled>
+          開始測驗
+        </button>
       </div>
 
       <div id="q1" class="question">
@@ -108,12 +111,17 @@
       </div>
 
       <div id="result" class="question">
-        <h2>測驗結果</h2>
-        <p id="score"></p>
-        <button class="quizOption" onclick="restartQuiz()">重新開始</button>
+        <h2 id="resulth2">測驗結果</h2>
+        <div id="pieChart" class="end-pie-chart">
+          <div id="percentageDisplay" class="white-in-pie-chart"></div>
+        </div>
+        <div class="test-go-back-div">
+          <div class="test-go-white-div">
+            <span id="courseNameDisplay" class="for-end-result"></span>
+          </div>
+        </div>
       </div>
     </div>
-
     <script src="quiz.js"></script>
   </body>
 </html>
