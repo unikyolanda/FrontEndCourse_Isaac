@@ -61,16 +61,6 @@
     </footer>
     <script src="article.js"></script>
     <script src="../common/common.js"></script>
-    <script>
-      window.onload = function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchTerm = urlParams.get("search");
-        if (searchTerm) {
-          // 如果 URL 中有搜索參數，則執行搜索
-          window.articleSearch(searchTerm);
-        }
-      };
-    </script>
 
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>
