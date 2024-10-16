@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    fetch("../front-enter-export.json")
+    fetch("../common/front-enter-export.json")
       .then((response) => response.json())
       .then((data) => {
         const article = Object.values(data.article).find(

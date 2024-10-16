@@ -5,19 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="content.css" />
+    <link rel="stylesheet" href="../common/common.css" />
   </head>
 
   <body>
     <header>
-      <a href="../index.html"
-        ><img class="logo" src="../Image/FE_logo-4.png"
+      <a href="../index/index.html"
+        ><img class="logo" src="../index/Image/FE_logo-4.png"
       /></a>
       <nav class="navbar">
-        <div class="navbarp">探索</div>
+        <div class="navbarp"><a href="../article/article.html">探索</a></div>
         <div class="navbarp">技能樹</div>
         <div class="navbarp">登入</div>
         <div class="navbarp" id="navSearch">
-          <img src="../Image/FE_search_green.png" />
+          <img src="../index/Image/FE_search_green.png" />
         </div>
       </nav>
     </header>
@@ -25,13 +26,13 @@
     <!--........................-->
 
     <div class="testgo">
-      <img src="../Image/FE_test_go.png" />
+      <img src="../index/Image/FE_test_go.png" />
     </div>
 
     <main id="mainContainer"></main>
     <!--........................-->
     <section class="goUp">
-      <img src="../Image/FE_TOP.png" id="upup" />
+      <img src="../index/Image/FE_TOP.png" id="upup" />
     </section>
     <footer>
       <div class="footer1" id="footercontact"><p>聯絡</p></div>
@@ -45,25 +46,16 @@
       </div>
       <div class="footerimg11">
         <a href="https://www.facebook.com/yize.huang" target="_blank"
-          ><img class="footerimg" src="../Image/new-facebook-blue.svg"
+          ><img class="footerimg" src="../index/Image/new-facebook-blue.svg"
         /></a>
         <a href="https://line.me/ti/p/gffPB8S-Vw" target="_blank"
-          ><img class="footerimg" src="../Image/FE_line.png"
+          ><img class="footerimg" src="../index/Image/FE_line.png"
         /></a>
       </div>
     </footer>
     <script src="content.js"></script>
-    <div class="searchExpend">
-      <div id="searchFrame">
-        <p class="searchbar">search</p>
-        <form id="searchform">
-          <input id="searchinput" type="text" />
-          <div class="microphone"></div>
-          <div class="searchsearch" id="innerSearch"></div>
-        </form>
-      </div>
-      <div id="searchSpace"></div>
-    </div>
+    <script src="../common/common.js"></script>
+
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>
       <div class="loadingBtm"></div>
