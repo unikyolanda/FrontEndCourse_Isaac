@@ -62,7 +62,7 @@ function initializeSearch() {
       } else {
         // 如果不在 article.html，跳轉到 article.html 並帶上搜索參數
         window.location.assign(
-          `../article/article.html?search=${encodeURIComponent(searchTerm)}`
+          "../article/article.html?search=${encodeURIComponent(searchTerm)}"
         );
       }
     }
