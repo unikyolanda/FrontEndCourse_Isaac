@@ -1,21 +1,171 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const testgogoButton = document.getElementById("testgogo");
+  if (testgogoButton) {
+    testgogoButton.addEventListener("click", function () {
+      createQuizElements();
+      initQuiz();
+    });
+  }
+});
+
 let currentQuestion = 0;
 const totalQuestions = 5;
 const answers = [];
 let courseData = {};
 
 function initQuiz() {
-  fetch("../front-enter-export.json")
-    .then((response) => response.json())
+  // 使用絕對路徑
+
+  fetch("../common/front-enter-export.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text(); // 先獲取文本內容
+    })
+    .then((text) => {
+      try {
+        return JSON.parse(text); // 嘗試解析 JSON
+      } catch (e) {
+        console.error("JSON 解析錯誤:", e);
+        console.log("收到的內容:", text);
+        throw new Error("無效的 JSON 數據");
+      }
+    })
     .then((data) => {
       courseData = data.article;
-      document.getElementById("startBtn").disabled = false;
-      document.getElementById("loading").style.display = "none";
+      const startBtn = document.getElementById("startBtn");
+      const loading = document.getElementById("loading");
+      if (startBtn) startBtn.disabled = false;
+      if (loading) loading.style.display = "none";
     })
     .catch((error) => {
-      console.error("Error loading course data:", error);
-      document.getElementById("loading").textContent =
-        "加載數據時出錯，請刷新頁面重試。";
+      console.error("載入課程數據時出錯:", error);
+      const loading = document.getElementById("loading");
+      if (loading) loading.textContent = "載入數據時出錯，請刷新頁面重試。";
     });
+}
+
+function createQuizElements() {
+  console.log("sss");
+  const quizHtml = `
+    <div id="quiz">
+    <div id="intro" class="question active">
+    <h1 id="starth1">測驗說明</h1>
+    <p id="starthp">
+      點選「開始測驗」後，系統會根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的適合度。
+    </p>
+    <p id="loading">正在加載課程數據，請稍候...</p>
+    <button id="startBtn" class="quizOption" onclick="startQuiz()" disabled>
+      開始測驗
+    </button>
+  </div>
+  
+  <div id="q1" class="question">
+    <h2>選擇在哪個縣市學習？</h2>
+    <p>1/5</p>
+    <button class="quizOption" onclick="selectAnswer(1, '台北')">
+      台北
+    </button>
+    <button class="quizOption" onclick="selectAnswer(1, '台中')">
+      台中
+    </button>
+    <button class="quizOption" onclick="selectAnswer(1, '高雄')">
+      高雄
+    </button>
+    <button class="quizOption" onclick="selectAnswer(1, '各地')">
+      各地
+    </button>
+    <button class="quizOption" onclick="selectAnswer(1, '不重要')">
+      不重要
+    </button>
+  </div>
+  
+  <div id="q2" class="question">
+    <h2>每月能撥出多少費用學習？</h2>
+    <p>2/5</p>
+    <button class="quizOption" onclick="selectAnswer(2, '3000元以下')">
+      3000元以下
+    </button>
+    <button class="quizOption" onclick="selectAnswer(2, '6000元內')">
+      6000元內
+    </button>
+    <button class="quizOption" onclick="selectAnswer(2, '10000元內')">
+      10000元內
+    </button>
+    <button class="quizOption" onclick="selectAnswer(2, '10001元以上')">
+      10001元以上
+    </button>
+    <button class="quizOption" onclick="selectAnswer(2, '不重要')">
+      不重要
+    </button>
+  </div>
+  
+  <div id="q3" class="question">
+    <h2>每周能撥出多少時間學習？</h2>
+    <p>3/5</p>
+    <button class="quizOption" onclick="selectAnswer(3, '16小時以下')">
+      16小時以下
+    </button>
+    <button class="quizOption" onclick="selectAnswer(3, '30小時內')">
+      30小時內
+    </button>
+    <button class="quizOption" onclick="selectAnswer(3, '45小時內')">
+      45小時內
+    </button>
+    <button class="quizOption" onclick="selectAnswer(3, '46小時以上')">
+      46小時以上
+    </button>
+    <button class="quizOption" onclick="selectAnswer(3, '不重要')">
+      不重要
+    </button>
+  </div>
+  
+  <div id="q4" class="question">
+    <h2>對班制的需求是？</h2>
+    <p>4/5</p>
+    <button class="quizOption" onclick="selectAnswer(4, '大班制')">
+      大班制
+    </button>
+    <button class="quizOption" onclick="selectAnswer(4, '小班制')">
+      小班制
+    </button>
+    <button class="quizOption" onclick="selectAnswer(4, '一對一')">
+      一對一
+    </button>
+    <button class="quizOption" onclick="selectAnswer(4, '不重要')">
+      不重要
+    </button>
+  </div>
+  
+  <div id="q5" class="question">
+    <h2>喜歡什麼樣的教學方式？</h2>
+    <p>5/5</p>
+    <button class="quizOption" onclick="selectAnswer(5, '放養制')">
+      放養制
+    </button>
+    <button class="quizOption" onclick="selectAnswer(5, '手把手教制')">
+      手把手教制
+    </button>
+    <button class="quizOption" onclick="selectAnswer(5, '不重要')">
+      不重要
+    </button>
+  </div>
+  
+  <div id="result" class="question">
+    <h2 id="resulth2">測驗結果</h2>
+    <div id="pieChart" class="end-pie-chart">
+      <div id="percentageDisplay" class="white-in-pie-chart"></div>
+    </div>
+    <div class="test-go-back-div">
+      <div class="test-go-white-div">
+        <span id="courseNameDisplay" class="for-end-result"></span>
+      </div>
+    </div>
+  </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", quizHtml);
 }
 
 function startQuiz() {
@@ -124,5 +274,3 @@ function restartQuiz() {
   currentQuestion = 0;
   answers.length = 0;
 }
-
-window.onload = initQuiz;
