@@ -1,3 +1,42 @@
+/*  Login   */
+document.addEventListener("DOMContentLoaded", function () {
+  const loginGo = document.getElementById("loginGo");
+});
+loginGo.addEventListener("click", function () {
+  initializeLogin();
+});
+
+function initializeLogin() {
+  const loginHtml = `
+  <div id="login">
+  <div id="loginMain">
+    <div id="loginLogo"></div>
+    <div id="loginInput">
+      <input class="loginInputForm" id="loginEmail" placeholder="Email" />
+      <input class="loginInputForm" id="loginPassword" placeholder="******" type="password" />
+    </div>
+    <p id="loginForget">忘記密碼</p>
+    <div id="loginInOut">
+      <button class="loginbtn" id="loginRegister">註冊</button>
+      <button class="loginbtn" id="loginSignIn">登入</button>
+    </div>
+    <button id="loginMail">Log In With Gmail</button>
+  </div>
+</div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", loginHtml);
+  const login = document.getElementById("login");
+  const loginMain = document.getElementById("loginMain");
+
+  login.addEventListener("click", function (e) {
+    if (!loginMain.contains(e.target)) {
+      login.style.display = "none";
+      login.remove();
+    }
+  });
+  console.log("目前成功");
+}
+
 /*  search   */
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -585,7 +585,7 @@ footer {
   opacity: 0;
 }
 .loading-img {
-  background: url(../Image/FE_logo-4.png);
+  background: url(../index/Image/FE_logo-4.png);
   background-size: cover;
   width: 300px;
   height: 130px;
