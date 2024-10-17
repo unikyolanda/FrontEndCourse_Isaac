@@ -5,15 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="../common/common.css" />
   </head>
 
   <body>
     <header>
-      <img class="logo" src="Image/FE_logo-4.png" />
+      <a href="../index/index.html"
+        ><img class="logo" src="../index/Image/FE_logo-4.png"
+      /></a>
       <nav class="navbar">
-        <div class="navbarp">探索</div>
+        <div class="navbarp"><a href="../article/article.html">探索</a></div>
         <div class="navbarp">技能樹</div>
-        <div class="navbarp">登入</div>
+        <div class="navbarp" id="loginGo">登入</div>
         <div class="navbarp" id="navSearch">
           <img src="Image/FE_search_green.png" />
         </div>
@@ -29,7 +32,7 @@
       </div>
     </section>
 
-    <div class="testgo">
+    <div class="testgo" id="testgogo">
       <img src="Image/FE_test_go.png" />
     </div>
     <main>
@@ -112,17 +115,8 @@
       </div>
     </footer>
     <script src="index.js"></script>
-    <div class="searchExpend">
-      <div id="searchFrame">
-        <p class="searchbar">search</p>
-        <form id="searchform">
-          <input id="searchinput" type="text" />
-          <div class="microphone"></div>
-          <div class="searchsearch"></div>
-        </form>
-      </div>
-      <div id="searchSpace"></div>
-    </div>
+    <script src="../common/common.js"></script>
+
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>
       <div class="loadingBtm"></div>

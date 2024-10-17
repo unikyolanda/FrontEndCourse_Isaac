@@ -1,0 +1,162 @@
+/*Login＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+
+#login {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 50;
+  justify-content: center;
+  align-items: center;
+}
+#loginMain {
+  height: 430px;
+  width: 350px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 1px solid #979797;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+#loginLogo {
+  margin-top: 15px;
+  width: 225px;
+  height: 105px;
+  background-image: url(../index/Image/FE_logo-4.png);
+  background-size: 225px 105px;
+}
+#loginInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 20%;
+  width: 90%;
+  margin: 160 auto;
+}
+.loginInputForm {
+  margin: 0 auto;
+  height: 40px;
+  width: 265px;
+  border: rgb(128, 128, 128) solid 0.5px;
+  font-size: 16px;
+  padding-left: 20px;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+#loginForget {
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  align-self: self-end;
+  margin-right: 50px;
+  text-align: right;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.loginbtn {
+  width: 110px;
+  background-color: rgb(26, 216, 211);
+  height: 38px;
+  color: white;
+  text-align: center;
+  line-height: 38px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px 10px;
+}
+#loginMail {
+  margin: 0 auto;
+  height: 38px;
+  width: 250px;
+  background-color: #d93025;
+  color: white;
+  text-align: center;
+  line-height: 38px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  border: 0;
+}
+
+/*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+.searchExpend {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: calc(100vh - 85px);
+  top: 85px;
+  z-index: 3;
+  display: none;
+  margin-top: 0;
+}
+#searchFrame {
+  background-color: rgb(238, 237, 237);
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  height: calc((100vh - 85px) / 2);
+  z-index: 5;
+  align-items: center;
+}
+.searchbar {
+  color: rgb(26, 216, 211);
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 3px;
+  font-size: 22px;
+  margin-top: 3vh;
+  z-index: 5;
+}
+#searchform {
+  width: 60%;
+  height: 8vh;
+  background-color: aliceblue;
+  border-radius: 20px;
+  margin-top: 2vh;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#searchinput {
+  background-color: white;
+  align-self: center;
+  padding: 3%;
+  width: 80%;
+  height: 70%;
+  border: 0px solid white;
+  letter-spacing: 12px;
+  justify-content: center;
+}
+.microphone {
+  background: url(../index/Image/microphone.svg);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.searchsearch {
+  background: url(../index/Image/FE_search_green.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+
+#searchSpace {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: calc(50vh - 42.5px);
+}

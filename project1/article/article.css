@@ -2,11 +2,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font family 還沒用*/
 }
 body {
   display: block;
   padding-top: 80px;
+  background-color: rgb(255, 255, 255);
 }
 
 a {
@@ -66,34 +66,206 @@ header {
   transform: scale(1.2, 1.2);
 }
 
-.top {
-  background-image: url(Image/key-visual.jpg);
-  height: 580px;
+.toppic {
+  margin-top: 0;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 為了讓子元素絕對定位 */
+  margin-top: 10px;
+  background-image: url(aritcleimg/contact-key.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  animation: chamgeImage 20s infinite;
+}
+@keyframes chamgeImage {
+  0% {
+    background-image: url(aritcleimg/contact-key.jpg);
+  }
+  33% {
+    background-image: url(aritcleimg/rotate-img-1.jpg);
+  }
+  66% {
+    background-image: url(aritcleimg/rotate-img-2.jpg);
+  }
+  100% {
+    background-image: url(aritcleimg/contact-key.jpg);
+  }
+}
+.toptext {
+  font-size: 24px;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.7);
+  padding: 6px;
+  border-radius: 5px;
+  letter-spacing: 10px;
+  padding-left: 23px;
+  z-index: 2; /* 確保圖片在文字下面 */
+}
+
+.toppic:hover .toptext {
+  opacity: 0.6;
+}
+
+.fourOptions {
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 80px;
+  font-size: 20px;
+  box-shadow: 0 0 15px rgba(199, 199, 199, 0.8);
+  color: rgb(123, 121, 121);
+}
+
+#allopt,
+#opt1,
+#opt2,
+#opt3 {
+  cursor: pointer;
+}
+
+#allopt:hover,
+#opt1:hover,
+#opt2:hover,
+#opt3:hover {
+  opacity: 0.6;
+}
+
+#articlemain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 70px;
+  flex-wrap: wrap;
+}
+
+.article {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(26, 216, 211);
+  padding: 20px 20px;
+  margin: 20px;
+  display: block;
+  height: 480px;
+  width: 350px;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.location:hover {
+  opacity: 0.6;
+}
+
+.locationIcon {
+  width: 17px;
+  height: 23px;
+}
+.locationText {
+  font-size: 16px;
+  text-align: center;
+  color: rgb(125, 125, 125);
+  line-height: 10px;
+}
+.blockContent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
-  position: relative;
-  background-position-y: 50%;
-  background-position-x: 50%;
-  margin: 10px 0px;
+  justify-content: center;
+}
+.articleImgFrame {
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+  margin: 10px auto;
+}
+.articleImg {
+  width: 200px;
+  height: 150px;
+  max-width: 100%;
+  max-height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.articleImg:hover {
+  transform: scale(1.2, 1.2);
+}
+.academy {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 0px;
+  color: rgb(26, 216, 211);
+  cursor: pointer;
+  width: 250px;
+  height: 40px;
+  line-height: 38px;
+  margin: 5px auto;
+}
+.academy:hover {
+  opacity: 0.6;
 }
 
-.topP1 {
-  color: aliceblue;
-  font-weight: bold;
-  margin: 10px 10px;
-  align-self: center;
+.articleDetail {
+  line-height: 24px;
+  letter-spacing: 0px;
+  padding: 10px 30px;
+  text-align: center;
+  width: 300px;
+  color: rgb(45, 45, 45);
+}
+.articleDetail:hover {
+  opacity: 0.7;
+}
+.rd {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 240px;
+  margin: 10px auto;
+}
+.readmore {
+  color: rgb(26, 216, 211);
+  width: 120px;
+  text-align: right;
+  margin-left: 28px;
+  transition: all 0.3s ease-in-out;
+}
+.rd:hover .readmore {
+  margin-left: 10px;
+}
+.rd:hover .arrowleft {
+  margin-left: 46px;
 }
 
-#topP11 {
-  font-size: 38px;
-  letter-spacing: 5px;
+.arrowleft {
+  background-image: url(aritcleimg/arrow-right-one.png);
+  background-size: cover;
+  background-position: center;
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  transition: all 0.3s ease-in-out;
 }
-#topP12 {
-  font-size: 24px;
-  letter-spacing: 10px;
+
+.blockContent:hover {
+  opacity: 0.6;
 }
+
 #topArrowDown {
   display: block;
   margin-bottom: 10px;
@@ -121,184 +293,6 @@ header {
   100% {
     transform: translateY(0) rotate(90deg);
   }
-}
-.second1 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(Image/main1-img.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  width: 100%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background-position-y: bottom;
-  background-position-x: center;
-}
-
-#second1p1 {
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  letter-spacing: 3px;
-  line-height: 50px;
-  margin-bottom: 20px;
-}
-
-#second1button {
-  width: 130px;
-  height: 40px;
-  font-size: 20px;
-  background: transparent;
-  border-radius: 10px;
-  border: 2px solid rgb(26, 216, 211);
-  color: rgb(26, 216, 211);
-  margin: 0 auto;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-#second1button:hover {
-  margin: 10px auto;
-  transform: scale(1.2, 1.2);
-}
-
-.second2 {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(Image/main2.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 10px 0;
-  background-position-y: bottom;
-  background-position-x: center;
-}
-#second2p {
-  color: rgb(255, 255, 255);
-  font-size: 22px;
-  letter-spacing: 3px;
-  line-height: 50px;
-  margin-bottom: 20px;
-}
-.second2button {
-  width: 180px;
-  height: 40px;
-  font-size: 20px;
-  background: transparent;
-  border-radius: 10px;
-  border: 2px solid rgb(26, 216, 211);
-  color: rgb(26, 216, 211);
-  margin: 20px auto;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-.second2button:hover {
-  margin: 10px auto;
-  transform: scale(1.2, 1.2);
-}
-
-.second3 {
-  background-image: url(Image/main3.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  height: 700px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-direction: row;
-  margin: 10px 0;
-  background-position-y: bottom;
-  background-position-x: center;
-}
-
-.white {
-  background-image: url(Image/FE_white.png);
-  background-size: cover;
-  height: 420px;
-  width: 320px;
-  margin: 0 40px;
-  display: block;
-}
-
-.pen img {
-  height: 50px;
-  width: 50px;
-  margin: 40px auto;
-}
-.second3titile {
-  font-size: 20px;
-  color: rgb(26, 216, 211);
-}
-.service-line {
-  border: 1px solid rgb(26, 216, 211);
-  width: 50px;
-  margin: 15px auto;
-}
-
-.second3P {
-  color: rgb(71, 71, 71);
-  line-height: 30px;
-}
-
-.second3button {
-  color: white;
-  border: none;
-  font-size: 20px;
-  background-color: rgb(26, 216, 211);
-  height: 35px;
-  width: 140px;
-  border-radius: 4px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-.second3button:hover {
-  color: rgb(229, 244, 244);
-}
-
-.third {
-  background-image: url(Image/main4.jpg);
-  height: 700px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-  background-position-y: bottom;
-  background-position-x: center;
-}
-
-.frame {
-  padding: 35px 20px 0px 20px;
-  width: 600px;
-  color: white;
-  font-size: 18px;
-}
-#thirdH1 {
-  color: white;
-  font-size: 30px;
-  margin: 30px auto;
-}
-.thirdline {
-  border: 1px solid white;
-  width: 40px;
-  margin: 0 auto;
-}
-#thirdP1 {
-  margin: 30px auto;
-  text-align: left;
-  color: white;
-  font-size: 18px;
-}
-#thirdP2 {
-  margin-bottom: 100px;
-  color: white;
-  text-align: left;
-  font-size: 18px;
 }
 
 .goUp {
@@ -413,7 +407,7 @@ footer {
   justify-content: center;
 }
 .microphone {
-  background: url(Image/microphone.svg);
+  background: url(../Image/microphone.svg);
   background-repeat: no-repeat;
   background-size: 30px 30px;
   width: 30px;
@@ -421,9 +415,40 @@ footer {
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
+
+/* 只在 "listening" 時才有 after 效果 */
+.microphone.listening::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid rgb(26, 216, 211);
+  opacity: 1;
+  animation: pulse 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
 .searchsearch {
-  background: url(Image/FE_search_green.png);
+  background: url(../Image/FE_search_green.png);
   background-repeat: no-repeat;
   background-size: 30px 30px;
   width: 30px;
@@ -439,6 +464,19 @@ footer {
 /*搜尋彈出＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
 
 @media (max-width: 480px) {
+  .article {
+    border-width: 1px;
+    border-style: none;
+    border-bottom-style: solid;
+
+    border-color: rgb(26, 216, 211);
+    padding: 20px 20px;
+    margin: 20px;
+    display: block;
+    height: 480px;
+    width: 350px;
+  }
+
   header {
     display: flex;
     align-items: center;
@@ -481,95 +519,7 @@ footer {
     width: 20px;
     height: auto;
   }
-  .second1,
-  .second2,
-  .second3 {
-    background-attachment: scroll;
-  }
-  .top,
-  .second1,
-  .second2,
-  .second3,
-  .third {
-    min-height: 300px;
-  }
-  .top,
-  .second1,
-  .second2,
-  .second3,
-  .third {
-    background-size: cover;
-    background-position: center;
-  }
-  .second3 {
-    flex-direction: column;
-  }
-  .white {
-    height: 310px;
-    width: 280px;
-    margin: auto auto;
-  }
 
-  .pen img {
-    height: 30px;
-    width: 30px;
-  }
-
-  .second3P {
-    line-height: 20px;
-  }
-
-  .second3button {
-    font-size: 16px;
-    background-color: rgb(26, 216, 211);
-    height: 35px;
-    width: 140px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .third {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url(Image/main4.jpg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    text-align: center;
-    background-position-y: bottom;
-    background-position-x: center;
-    word-break: break-all;
-  }
-
-  .frame {
-    padding: 35px 20px 0px 20px;
-    width: 100%;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    word-break: break-all;
-  }
-  #thirdH1 {
-    font-size: 30px;
-    margin: 30px auto;
-  }
-  .thirdline {
-    width: 40px;
-    margin: 0 auto;
-  }
-  #thirdP1 {
-    color: white;
-    font-size: 18px;
-    word-break: break-all;
-  }
-  #thirdP2 {
-    text-align: left;
-    font-size: 18px;
-    word-break: break-all;
-  }
   footer {
     background-color: rgb(231, 231, 231);
     display: flex;
@@ -635,7 +585,7 @@ footer {
   opacity: 0;
 }
 .loading-img {
-  background: url(Image/FE_logo-4.png);
+  background: url(../index/Image/FE_logo-4.png);
   background-size: cover;
   width: 300px;
   height: 130px;
