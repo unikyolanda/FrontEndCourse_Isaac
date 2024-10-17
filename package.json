@@ -1,0 +1,6 @@
+{
+  "description": "",
+  "dependencies": {
+    "firebase": "^10.14.1"
+  }
+}

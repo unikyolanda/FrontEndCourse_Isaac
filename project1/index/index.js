@@ -13,5 +13,3 @@ document.getElementById("upup").addEventListener("click", function () {
     behavior: "smooth",
   });
 });
-
-
