@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getting started</title>
     <script type="module" src="test.js"></script>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>This is a basic HTML page setup.</p>
-</body>
+    <script type="module" src="common/common.js"></script>
+
+    <link rel="stylesheet" href="common/common.css" />
+  </head>
+  <body>
+    <div id="login">
+      <div id="loginMain">
+        <div id="loginLogo"></div>
+        <div id="loginInput">
+          <input class="loginInputForm" id="loginEmail" placeholder="Email" />
+          <input
+            class="loginInputForm"
+            id="loginPassword"
+            placeholder="******"
+            type="password"
+          />
+        </div>
+        <p id="loginForget">忘記密碼</p>
+        <div id="loginInOut">
+          <button class="loginbtn" id="loginRegister">註冊</button>
+          <button class="loginbtn" id="loginSignIn">登入</button>
+        </div>
+        <button id="loginMail">Log In With Gmail</button>
+      </div>
+    </div>
+    <div id="wrongLogin">
+      <div id="wrongLoginMain">
+        <h1>Reminder</h1>
+        <p>信箱或密碼錯誤</p>
+        <button id="wrongLoginOk">Ok</button>
+      </div>
+    </div>
+  </body>
 </html>

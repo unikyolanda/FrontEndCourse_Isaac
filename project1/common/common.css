@@ -1,5 +1,53 @@
 /*Login＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
 
+#wrongLogin {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 51;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#wrongLoginMain {
+  height: 230px;
+  width: 330px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 1px solid #979797;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#wrongLoginMain h1 {
+  color: #979797;
+}
+#wrongLoginMain p {
+  margin: 0;
+  color: rgb(26, 216, 211);
+  font-size: 20px;
+}
+#wrongLoginOk {
+  width: 110px;
+  background-color: rgb(26, 216, 211);
+  height: 38px;
+  color: white;
+  text-align: center;
+  line-height: 38px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 25px 10px;
+}
+/*Login wrong＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
+
 #login {
   position: fixed;
   width: 100vw;
