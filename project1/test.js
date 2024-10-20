@@ -1,14 +1,35 @@
+//signUP account
+const creatAccount = async () => {
+  const loginEmail = document.getElementById("loginEmail").value;
+  const loginPassword = document.getElementById("loginPassword").value;
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      loginEmail,
+      loginPassword
+    );
+    console.log(userCredential.user);
+  } catch (error) {
+    console.log(error);
+    showLoginError(error);
+    console.log(loginEmail, loginPassword);
+  }
+};
+
+const loginRegister = document.getElementById("loginRegister");
+loginRegister.addEventListener("click", creatAccount);
+
 /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
 const showLoginError = (error) => {
-    const wrongLogin = document.getElementById("wrongLogin");
-    const wrongLoginOk = document.getElementById("wrongLoginOk");
-  
-    wrongLogin.style.display = "flex";
-    wrongLoginOk.addEventListener("click", function () {
-      wrongLogin.style.display = "none";
-      //wrongLogin.remove();
-    });
-  };
+  const wrongLogin = document.getElementById("wrongLogin");
+  const wrongLoginOk = document.getElementById("wrongLoginOk");
+
+  wrongLogin.style.display = "flex";
+  wrongLoginOk.addEventListener("click", function () {
+    wrongLogin.style.display = "none";
+    //wrongLogin.remove();
+  });
+};
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
@@ -17,6 +38,7 @@ import {
   getAuth,
   connectAuthEmulator,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 const firebaseApp = initializeApp({
@@ -37,12 +59,12 @@ const loginEmailPassword = async () => {
   const loginPassword = document.getElementById("loginPassword").value;
 
   try {
-    const userCredental = await signInWithEmailAndPassword(
+    const userCredential = await signInWithEmailAndPassword(
       auth,
       loginEmail,
       loginPassword
     );
-    console.log(userCredental.user);
+    console.log(userCredential.user);
   } catch (error) {
     console.log(error);
     showLoginError(error);
