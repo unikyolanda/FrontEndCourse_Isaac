@@ -3,7 +3,11 @@ import * as Common from "./common.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
-
+import {
+  getDatabase,
+  ref,
+  set,
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 import {
   getAuth,
   connectAuthEmulator,
@@ -23,6 +27,8 @@ const firebaseApp = initializeApp({
   messagingSenderId: "12420467790",
   appId: "1:12420467790:web:f4a330188240610105471f",
   measurementId: "G-G9Y63GPFK8",
+  databaseURL:
+    "https://frontendcourse-a54bf-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 //打開登入
 const auth = getAuth(firebaseApp);
@@ -101,7 +107,6 @@ export const monitourAuthState = async () => {
 // 帳號登出
 export const logout = async () => {
   await signOut(auth);
-  window.location.replace("../member/member.html");
 };
 // google auth
 
@@ -114,12 +119,34 @@ auth.languageCode = "en";
 export const googlelog = async () => {
   signInWithPopup(auth, provider)
     .then((result) => {
+      window.location.href = "../member/member.html";
       const credential = GoogleAuthProvider.credentialFromResult(result);
       console.log(user);
-      window.location.replace("../member/member.html");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("登入錯誤");
     });
 };
+
+//realtime database
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  const reference = ref(db, "user/" + userId);
+
+  set(reference, {
+    username: name,
+    email: email,
+    profile_picture: imageUrl,
+  })
+    .then(() => {
+      console.log("數據寫入成功");
+    })
+    .catch((error) => {
+      console.error("數據寫入失敗：", error);
+    });
+}
+
+// 測試寫入數據
+writeUserData("asdf", "aa", "aa@aa.com", "aaurl");
