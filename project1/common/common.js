@@ -47,6 +47,9 @@ function initializeLogin() {
   const loginLogo = document.getElementById("loginLogo");
   loginLogo.addEventListener("click", Firebase.logout);
   Firebase.monitourAuthState();
+
+  const loginMail = document.getElementById("loginMail");
+  loginMail.addEventListener("click", Firebase.googlelog);
 }
 
 /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */

@@ -11,6 +11,8 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 const firebaseApp = initializeApp({
@@ -24,7 +26,6 @@ const firebaseApp = initializeApp({
 });
 //打開登入
 const auth = getAuth(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:9199");
 
 export const loginEmailPassword = async () => {
   const loginEmail = document.getElementById("loginEmail").value;
@@ -98,8 +99,27 @@ export const monitourAuthState = async () => {
   });
 };
 // 帳號登出
-export const logout = async()=>{
+export const logout = async () => {
   await signOut(auth);
+  window.location.replace("../member/member.html");
+};
+// google auth
 
-}
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: "select_account", // 添加这行，确保每次都显示账号选择界面
+});
+auth.languageCode = "en";
 
+export const googlelog = async () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      console.log(user);
+      window.location.replace("../member/member.html");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
