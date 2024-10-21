@@ -1,4 +1,5 @@
 /*  Login wrong  */
+import * as Firebase from "./firebase.js";
 
 /*  Login   */
 
@@ -38,7 +39,17 @@ function initializeLogin() {
     }
   });
   console.log("目前成功");
+
+  const loginSignIn = document.getElementById("loginSignIn");
+  loginSignIn.addEventListener("click", Firebase.loginEmailPassword);
+  const loginRegister = document.getElementById("loginRegister");
+  loginRegister.addEventListener("click", Firebase.creatAccount);
+  const loginLogo = document.getElementById("loginLogo");
+  loginLogo.addEventListener("click", Firebase.logout);
+  Firebase.monitourAuthState();
 }
+
+/* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
 
 /*  search   */
 

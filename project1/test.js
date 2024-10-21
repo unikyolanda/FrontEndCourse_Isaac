@@ -1,24 +1,3 @@
-//signUP account
-const creatAccount = async () => {
-  const loginEmail = document.getElementById("loginEmail").value;
-  const loginPassword = document.getElementById("loginPassword").value;
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      loginEmail,
-      loginPassword
-    );
-    console.log(userCredential.user);
-  } catch (error) {
-    console.log(error);
-    showLoginError(error);
-    console.log(loginEmail, loginPassword);
-  }
-};
-
-const loginRegister = document.getElementById("loginRegister");
-loginRegister.addEventListener("click", creatAccount);
-
 /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
 const showLoginError = (error) => {
   const wrongLogin = document.getElementById("wrongLogin");
@@ -39,6 +18,7 @@ import {
   connectAuthEmulator,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 const firebaseApp = initializeApp({
@@ -71,3 +51,40 @@ const loginEmailPassword = async () => {
   }
 };
 loginSignIn.addEventListener("click", loginEmailPassword);
+
+//signUP account
+
+const creatAccount = async () => {
+  const loginEmail = document.getElementById("loginEmail").value;
+  const loginPassword = document.getElementById("loginPassword").value;
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      loginEmail,
+      loginPassword
+    );
+    console.log(userCredential.user);
+  } catch (error) {
+    console.log(error);
+    showLoginError(error);
+    console.log(loginEmail, loginPassword);
+  }
+
+  const loginRegister = document.getElementById("loginRegister");
+  loginRegister.addEventListener("click", creatAccount);
+};
+
+/*const monitourAuthState = async () => {
+  const messageWrong = document.getElementById("messageWrong");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user);
+
+    } else {
+      showLoginError(error);
+      messageWrong.innerHTML = "You are not logged in.";
+    }
+  });
+};
+monitourAuthState();*/
