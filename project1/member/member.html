@@ -29,13 +29,61 @@
     </header>
 
     <section id="toppic">
-        <p id="toppicText">會員中心</p>
+      <p id="toppicText">會員中心</p>
     </section>
 
     <main>
+      <div id="left">
+        <botton class="quizOption" id="memeberId">個人資料</botton>
+        <botton class="quizOption" id="collect">收藏</botton>
+        <botton class="quizOption" id="memeberLogout">登出</botton>
+      </div>
+      <div class="right" id="right1">
+        <div id="profilePhoto"></div>
+        <form class="right1Form">
+          <p>姓名</p>
+          <input
+            maxlength="10"
+            id="inputName"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入姓名"
+          />
+        </form>
+        <form class="right1Form">
+          <p>手機</p>
+          <input
+            maxlength="20"
+            id="inputPhone"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入電話"
+          />
+        </form>
+        <form class="right1Form">
+          <p>信箱</p>
+          <input
+            maxlength="40"
+            id="inputmail"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入信箱"
+          />
+        </form>
+        <div id="change">
+            <botton class="quizOption" id="yesChanged">確定</botton>
+            <botton class="quizOption" id="noChanged">取消</botton>
 
+        </div>
+        <div id="changechange">
+        <botton class="quizOption" id="infoChanged">修改資料</botton>
+        </div>
+      </div>
+      <div class="right" id="right2"></div>
     </main>
-
 
     <div class="testgo" id="testgogo">
       <img src="../index/Image/FE_test_go.png" />
