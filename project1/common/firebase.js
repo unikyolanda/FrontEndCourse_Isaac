@@ -45,6 +45,7 @@ export const loginEmailPassword = async () => {
     );
     console.log(userCredential.user);
     showMessage(null, "login_success");
+    window.location.href = "../member/member.html";
   } catch (error) {
     console.log(error);
     showMessage(error, "login_error");
@@ -111,6 +112,7 @@ export const creatAccount = async () => {
     );
     console.log(userCredential.user);
     showMessage(null, "login_success");
+    window.location.href = "../member/member.html";
   } catch (error) {
     console.log(error);
     showMessage(error, "signup_error");
@@ -127,6 +129,7 @@ export const monitourAuthState = async () => {
       // 用戶已登入
       console.log("用戶已登入:", user);
 
+      updateUserProfile(user);
       // 隱藏登入按鈕，顯示會員按鈕
       if (loginGoElement) {
         loginGoElement.style.display = "none";
@@ -176,6 +179,47 @@ export const googlelog = async () => {
     });
 };
 
+// 資料更新
+function updateUserProfile(user) {
+  const userName = user.displayName;
+  const userEmail = user.email;
+  const userPhoto = user.photoURL;
+
+  if (
+    document.getElementById("inputName") &&
+    document.getElementById("inputmail")
+  ) {
+    document.getElementById("inputName").value = userName;
+    document.getElementById("inputmail").value = userEmail;
+  } else {
+    console.log("至少一個 ID 元素不存在");
+  }
+
+  if (user.photoURL != null && document.getElementById("profilePhoto")) {
+    document.getElementById(
+      "profilePhoto"
+    ).style.background = `url(${userPhoto})`;
+    document.getElementById("profilePhoto").style.backgroundPosition = "center";
+    document.getElementById("profilePhoto").style.backgroundSize = "cover";
+    document.getElementById("profilePhoto").style.backgroundRepeat =
+      "no-repeat";
+  }
+
+  if (user.photoURL != null) {
+    document.getElementById("member").textContent = "";
+    document.getElementById("member").style.background = `url(${userPhoto})`;
+    document.getElementById("member").style.width = "50px";
+    document.getElementById("member").style.height = "50px";
+    document.getElementById("member").style.backgroundPosition = "center";
+    document.getElementById("member").style.backgroundSize = "cover";
+    document.getElementById("member").style.backgroundRepeat = "no-repeat";
+    document.getElementById("member").style.borderRadius = "50%";
+    document.getElementById("member").style.opacity = "70%";
+    document.getElementById("member").addEventListener("click", function () {
+      window.location.href = "../member/member.html";
+    });
+  }
+}
 //realtime database
 function writeUserData(userId, name, email, imageUrl) {
   const db = getDatabase();

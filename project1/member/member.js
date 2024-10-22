@@ -1,3 +1,5 @@
+import * as Firebase from "../common/firebase.js";
+
 const right1 = document.getElementById("right1");
 const right2 = document.getElementById("right2");
 const change = document.getElementById("change");
@@ -5,7 +7,7 @@ const changechange = document.getElementById("changechange");
 
 const yesChanged = document.getElementById("yesChanged");
 const noChanged = document.getElementById("noChanged");
-
+const profilePhoto = document.getElementById("profilePhoto");
 const inputName = document.getElementById("inputName");
 const inputPhone = document.getElementById("inputPhone");
 const inputmail = document.getElementById("inputmail");
@@ -14,6 +16,12 @@ let originalData = {
   phone: "",
   email: "",
 };
+
+const memeberLogout = document.getElementById("memeberLogout");
+memeberLogout.addEventListener("click", function () {
+  Firebase.logout();
+  window.location.href = "../index/index.html";
+});
 
 const memeberId = document.getElementById("memeberId");
 memeberId.addEventListener("click", function () {
@@ -98,18 +106,14 @@ function restoreOriginalData() {
 function enableInputs() {
   inputName.disabled = false;
   inputPhone.disabled = false;
-  inputmail.disabled = false;
   inputName.style.border = "3px solid rgba(230, 230, 230, 0.7)";
   inputPhone.style.border = "3px solid rgba(230, 230, 230, 0.7)";
-  inputmail.style.border = "3px solid rgba(230, 230, 230, 0.7)";
 }
 
 // 停用輸入欄位
 function disableInputs() {
   inputName.disabled = true;
   inputPhone.disabled = true;
-  inputmail.disabled = true;
   inputName.style.border = "0px solid rgba(230, 230, 230, 0.7)";
   inputPhone.style.border = "0px solid rgba(230, 230, 230, 0.7)";
-  inputmail.style.border = "0px solid rgba(230, 230, 230, 0.7)";
 }
