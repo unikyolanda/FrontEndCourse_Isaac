@@ -4,6 +4,7 @@ import * as Firebase from "./firebase.js";
 /*  Login   */
 
 document.addEventListener("DOMContentLoaded", function () {
+  Firebase.monitourAuthState();
   const loginGo = document.getElementById("loginGo");
 });
 loginGo.addEventListener("click", function () {

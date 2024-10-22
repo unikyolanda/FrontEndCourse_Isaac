@@ -44,25 +44,49 @@ export const loginEmailPassword = async () => {
       loginPassword
     );
     console.log(userCredential.user);
+    showMessage(null, "login_success");
   } catch (error) {
     console.log(error);
-    showLoginError(error);
+    showMessage(error, "login_error");
   }
 };
 //打開登入錯誤
 
-const showLoginError = (error) => {
-  const wrongLoginHtml = `
+const showMessage = (error, messageType = "login_error") => {
+  let message;
+
+  // 根據 messageType 設置不同的訊息
+  switch (messageType) {
+    case "login_error":
+      message = "信箱或密碼錯誤";
+      break;
+    case "logout":
+      message = "已登出";
+      break;
+    case "signup_error":
+      message = "註冊失敗";
+      break;
+    case "verification_error":
+      message = "認證失敗";
+      break;
+    case "login_success":
+      message = "成功登入";
+      break;
+    default:
+      message = "發生錯誤";
+  }
+
+  const messageHtml = `
   <div id="wrongLogin">
-  <div id="wrongLoginMain">
-    <h1>Reminder</h1>
-    <p id="messageWrong">信箱或密碼錯誤</p>
-    <button id="wrongLoginOk">Ok</button>
-  </div>
+    <div id="wrongLoginMain">
+      <h1>Reminder</h1>
+      <p id="messageWrong">${message}</p>
+      <button id="wrongLoginOk">Ok</button>
+    </div>
   </div>
   `;
 
-  document.body.insertAdjacentHTML("beforeend", wrongLoginHtml);
+  document.body.insertAdjacentHTML("beforeend", messageHtml);
 
   const wrongLogin = document.getElementById("wrongLogin");
   const wrongLoginOk = document.getElementById("wrongLoginOk");
@@ -86,27 +110,49 @@ export const creatAccount = async () => {
       loginPassword
     );
     console.log(userCredential.user);
+    showMessage(null, "login_success");
   } catch (error) {
     console.log(error);
-    showLoginError(error);
-
+    showMessage(error, "signup_error");
     console.log(loginEmail, loginPassword);
   }
 };
 // 帳號登入
-
 export const monitourAuthState = async () => {
   onAuthStateChanged(auth, (user) => {
+    const loginGoElement = document.getElementById("loginGo");
+    const memberElement = document.getElementById("member");
+
     if (user) {
-      console.log(user);
+      // 用戶已登入
+      console.log("用戶已登入:", user);
+
+      // 隱藏登入按鈕，顯示會員按鈕
+      if (loginGoElement) {
+        loginGoElement.style.display = "none";
+      }
+      if (memberElement) {
+        memberElement.style.display = "block";
+      }
     } else {
-      console.log("登出了");
+      // 用戶已登出
+      console.log("用戶已登出");
+
+      // 顯示登入按鈕，隱藏會員按鈕
+      if (loginGoElement) {
+        loginGoElement.style.display = "block";
+      }
+      if (memberElement) {
+        memberElement.style.display = "none";
+      }
     }
   });
 };
+
 // 帳號登出
 export const logout = async () => {
   await signOut(auth);
+  showMessage(null, "logout");
 };
 // google auth
 
@@ -126,7 +172,7 @@ export const googlelog = async () => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert("登入錯誤");
+      showMessage(error, "verification_error");
     });
 };
 
@@ -147,6 +193,6 @@ function writeUserData(userId, name, email, imageUrl) {
       console.error("數據寫入失敗：", error);
     });
 }
+writeUserData("asdf", "aa", "aa@aa.com", "aaurl");
 
 // 測試寫入數據
-writeUserData("asdf", "aa", "aa@aa.com", "aaurl");
