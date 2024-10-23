@@ -7,6 +7,7 @@ import {
   getDatabase,
   ref,
   set,
+  get,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 import {
   getAuth,
@@ -128,8 +129,103 @@ export const monitourAuthState = async () => {
     if (user) {
       // 用戶已登入
       console.log("用戶已登入:", user);
+      const userId = user.uid;
+      const db = getDatabase();
+      const userRef = ref(db, "user/" + userId);
 
-      updateUserProfile(user);
+      get(userRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          // 如果數據存在，更新輸入欄位
+          const userData = snapshot.val();
+          if (userData.profilePicture) {
+            document.getElementById("member").textContent = "";
+            document.getElementById(
+              "member"
+            ).style.background = `url(${userData.profilePicture})`;
+            document.getElementById("member").style.width = "50px";
+            document.getElementById("member").style.height = "50px";
+            document.getElementById("member").style.backgroundPosition =
+              "center";
+            document.getElementById("member").style.backgroundSize = "cover";
+            document.getElementById("member").style.backgroundRepeat =
+              "no-repeat";
+            document.getElementById("member").style.borderRadius = "50%";
+            document.getElementById("member").style.opacity = "70%";
+            document
+              .getElementById("member")
+              .addEventListener("click", function () {
+                window.location.href = "../member/member.html";
+              });
+          }
+        }
+      });
+
+      if (
+        document.getElementById("inputName") &&
+        document.getElementById("inputmail") &&
+        document.getElementById("inputPhone")
+      ) {
+        get(userRef)
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              // 如果數據存在，更新輸入欄位
+              const userData = snapshot.val();
+              if (userData.username) {
+                document.getElementById("inputName").value = userData.username;
+              }
+              if (userData.phone) {
+                document.getElementById("inputPhone").value = userData.phone;
+              }
+              if (userData.email) {
+                document.getElementById("inputmail").value = userData.email;
+              }
+              if (userData.profilePicture) {
+                document.getElementById(
+                  "profilePhoto"
+                ).style.background = `url(${userData.profilePicture})`;
+                document.getElementById(
+                  "profilePhoto"
+                ).style.backgroundPosition = "center";
+                document.getElementById("profilePhoto").style.backgroundSize =
+                  "cover";
+                document.getElementById("profilePhoto").style.backgroundRepeat =
+                  "no-repeat";
+
+                document.getElementById("member").textContent = "";
+                document.getElementById(
+                  "member"
+                ).style.background = `url(${userData.profilePicture})`;
+                document.getElementById("member").style.width = "50px";
+                document.getElementById("member").style.height = "50px";
+                document.getElementById("member").style.backgroundPosition =
+                  "center";
+                document.getElementById("member").style.backgroundSize =
+                  "cover";
+                document.getElementById("member").style.backgroundRepeat =
+                  "no-repeat";
+                document.getElementById("member").style.borderRadius = "50%";
+                document.getElementById("member").style.opacity = "70%";
+                document
+                  .getElementById("member")
+                  .addEventListener("click", function () {
+                    window.location.href = "../member/member.html";
+                  });
+              }
+
+              console.log("已從 Firebase 載入用戶數據");
+            } else {
+              // 如果數據不存在，調用 updateUserProfile
+              console.log("Firebase 中沒有用戶數據，開始創建新數據");
+              updateUserProfile(user);
+            }
+          })
+          .catch((error) => {
+            console.error("獲取用戶數據時出錯：", error);
+            // 發生錯誤時也調用 updateUserProfile
+            updateUserProfile(user);
+          });
+      }
+
       // 隱藏登入按鈕，顯示會員按鈕
       if (loginGoElement) {
         loginGoElement.style.display = "none";
@@ -232,7 +328,7 @@ function writeUserData(userId, name, email, imageUrl, phone) {
   set(reference, {
     username: name,
     email: email,
-    profile_picture: imageUrl,
+    profilePicture: imageUrl,
     phone: phone,
   })
     .then(() => {
