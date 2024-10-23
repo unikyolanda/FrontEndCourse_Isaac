@@ -1,4 +1,10 @@
 import * as Firebase from "../common/firebase.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getDatabase,
+  ref,
+  update as dbUpdate,
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 const right1 = document.getElementById("right1");
 const right2 = document.getElementById("right2");
@@ -43,7 +49,6 @@ infoChanged.addEventListener("click", function () {
   changechange.style.display = "none";
 });
 
-// 當點擊修改按鈕
 infoChanged.addEventListener("click", function () {
   // 儲存當前資料
   saveOriginalData();
@@ -52,11 +57,9 @@ infoChanged.addEventListener("click", function () {
   change.style.display = "flex";
   changechange.style.display = "none";
 
-  // 啟用輸入欄位
   enableInputs();
 });
 
-// 當點擊確認按鈕
 yesChanged.addEventListener("click", function () {
   // 儲存新的資料到 localStorage
   const newData = {
@@ -69,13 +72,38 @@ yesChanged.addEventListener("click", function () {
 
   // 停用輸入欄位
   disableInputs();
-
+  update(inputName.value, inputPhone.value);
   // 切換回原始介面
   change.style.display = "none";
   changechange.style.display = "flex";
 });
 
-// 當點擊取消按鈕
+function update(newName, newPhone) {
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
+
+  if (!currentUser) {
+    console.error("No user is currently signed in");
+    return;
+  }
+
+  const db = getDatabase();
+  const userRef = ref(db, "user/" + currentUser.uid);
+
+  const updates = {
+    username: newName,
+    phone: newPhone,
+  };
+
+  dbUpdate(userRef, updates)
+    .then(() => {
+      console.log("Profile updated successfully");
+    })
+    .catch((error) => {
+      console.error("Error updating profile:", error);
+    });
+}
+
 noChanged.addEventListener("click", function () {
   // 恢復原始資料
   restoreOriginalData();
@@ -88,21 +116,18 @@ noChanged.addEventListener("click", function () {
   changechange.style.display = "flex";
 });
 
-// 儲存原始資料
 function saveOriginalData() {
   originalData.name = inputName.value;
   originalData.phone = inputPhone.value;
   originalData.email = inputmail.value;
 }
 
-// 恢復原始資料
 function restoreOriginalData() {
   inputName.value = originalData.name;
   inputPhone.value = originalData.phone;
   inputmail.value = originalData.email;
 }
 
-// 啟用輸入欄位
 function enableInputs() {
   inputName.disabled = false;
   inputPhone.disabled = false;

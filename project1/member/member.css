@@ -72,7 +72,6 @@ main {
   cursor: pointer;
   border: none;
   display: block;
-  
 }
 
 .quizOption:hover {
@@ -122,8 +121,33 @@ main {
   display: none;
 }
 
-#change .quizOption{
-    margin:  30px;
+#change .quizOption {
+  margin: 30px;
+}
+
+@media (max-width: 480px) {
+  main {
+    flex-direction: column;
+    height: auto;
+  }
+  #left {
+    width: 100%;
+    height: auto;
+
+    flex-direction: column;
+  }
+  #right1 {
+    width: 100%;
+    height: auto;
+
+    padding: 10px;
+  }
+  #right2 {
+    height: auto;
+    width: 50%;
+
+    padding: 10px;
+  }
 }
 /* ........................................... */
 

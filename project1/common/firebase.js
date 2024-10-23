@@ -184,6 +184,8 @@ function updateUserProfile(user) {
   const userName = user.displayName;
   const userEmail = user.email;
   const userPhoto = user.photoURL;
+  const userUid = user.uid;
+  const userphone = user.phoneNumber;
 
   if (
     document.getElementById("inputName") &&
@@ -219,9 +221,11 @@ function updateUserProfile(user) {
       window.location.href = "../member/member.html";
     });
   }
+  writeUserData(userUid, userName, userEmail, userPhoto, userphone);
 }
 //realtime database
-function writeUserData(userId, name, email, imageUrl) {
+
+function writeUserData(userId, name, email, imageUrl, phone) {
   const db = getDatabase();
   const reference = ref(db, "user/" + userId);
 
@@ -229,6 +233,7 @@ function writeUserData(userId, name, email, imageUrl) {
     username: name,
     email: email,
     profile_picture: imageUrl,
+    phone: phone,
   })
     .then(() => {
       console.log("數據寫入成功");
@@ -237,6 +242,5 @@ function writeUserData(userId, name, email, imageUrl) {
       console.error("數據寫入失敗：", error);
     });
 }
-writeUserData("asdf", "aa", "aa@aa.com", "aaurl");
 
 // 測試寫入數據
