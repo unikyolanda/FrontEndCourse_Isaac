@@ -49,6 +49,10 @@ function initPage() {
             articleDiv.className = "article";
 
             articleDiv.innerHTML = `
+            <div class="star" data-name="${name}" data-img="${img}" >
+            <div class="starOn"></div>
+            <div class="starOff"></div>      
+            </div>
               <div class="location">
                 <img src="aritcleimg/location_icon_one.png" class="locationIcon" />
                 <p class="locationText cityFilter" data-city="${city}">${city}</p>

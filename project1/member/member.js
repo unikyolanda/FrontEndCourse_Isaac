@@ -4,6 +4,7 @@ import {
   getDatabase,
   ref,
   update as dbUpdate,
+  onValue,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 const right1 = document.getElementById("right1");
@@ -17,6 +18,44 @@ const profilePhoto = document.getElementById("profilePhoto");
 const inputName = document.getElementById("inputName");
 const inputPhone = document.getElementById("inputPhone");
 const inputmail = document.getElementById("inputmail");
+
+function getCollect() {
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
+  const db = getDatabase();
+
+  console.log(currentUser.uid);
+
+  const userRef = ref(db, `user/` + currentUser.uid + "/collect");
+  onValue(userRef, (snapshot) => {
+    const collectData = snapshot.val();
+    Object.values(collectData).forEach((item) => {
+      const imgUrl = item.collectedImg;
+      const name = item.collectedName;
+
+      const collectArticle = document.createElement("div");
+      collectArticle.className = "collectedStar";
+      collectArticle.innerHTML = `          
+      <img class="collectedStarImg" src=${imgUrl}></img>
+        <p class="collectedName">${name}</p>
+      <div class="trashBin"></div>
+      `;
+      document.getElementById("right2").appendChild(collectArticle);
+
+      console.log(imgUrl, name);
+    });
+  });
+}
+
+const auth = getAuth();
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    getCollect();
+  } else {
+    console.log("No user is signed in");
+  }
+});
+
 let originalData = {
   name: "",
   phone: "",

@@ -1,3 +1,30 @@
+.star {
+  height: 30px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.starOn {
+  display: none;
+  height: 30px;
+  width: 30px;
+  background: url("aritcleimg/star-background.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.starOff {
+  display: none;
+  height: 30px;
+  width: 30px;
+  background: url("aritcleimg/star-border.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 會員登入後 */
 * {
   padding: 0;
   margin: 0;

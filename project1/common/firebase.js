@@ -8,6 +8,9 @@ import {
   ref,
   set,
   get,
+  update,
+  push,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 import {
   getAuth,
@@ -132,7 +135,6 @@ export const monitourAuthState = async () => {
       const userId = user.uid;
       const db = getDatabase();
       const userRef = ref(db, "user/" + userId);
-
       get(userRef).then((snapshot) => {
         if (snapshot.exists()) {
           // 如果數據存在，更新輸入欄位
@@ -159,6 +161,50 @@ export const monitourAuthState = async () => {
           }
         }
       });
+
+      // collect
+      if (document.getElementById("articlemain")) {
+        document.querySelectorAll(".starOff").forEach(function (element) {
+          element.style.display = "block";
+          element.addEventListener("click", function () {
+            element.style.display = "none";
+
+            // 找到當前 .starOn 元素的父元素，並在該父元素中尋找 .starOff
+            const starOn = element.closest(".star").querySelector(".starOn");
+            const starOff = element.closest(".star").querySelector(".starOff");
+            const collectedName = element
+              .closest(".star")
+              .getAttribute("data-name");
+            const collectedImg = element
+              .closest(".star")
+              .getAttribute("data-img");
+
+            const collectRef = ref(
+              db,
+              `user/${userId}/collect/` + collectedName
+            );
+
+            set(collectRef, {
+              collectedName: collectedName,
+              collectedImg: collectedImg,
+            });
+            console.log(collectedName, collectedImg);
+
+            if (starOn) {
+              starOn.style.display = "block";
+              starOn.addEventListener("click", function () {
+                starOn.style.display = "none";
+                starOff.style.display = "block";
+
+                remove(collectRef, {
+                  collectedName: collectedName,
+                  collectedImg: collectedImg,
+                });
+              });
+            }
+          });
+        });
+      }
 
       if (
         document.getElementById("inputName") &&
@@ -330,6 +376,7 @@ function writeUserData(userId, name, email, imageUrl, phone) {
     email: email,
     profilePicture: imageUrl,
     phone: phone,
+    collect: collect,
   })
     .then(() => {
       console.log("數據寫入成功");
