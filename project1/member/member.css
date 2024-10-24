@@ -156,14 +156,16 @@ main {
   height: 20px;
   line-height: 20px;
   color: rgb(26, 216, 211);
+  margin: 6px auto;
 }
 .trashBin {
   background: url(Image/rubbish-bin.svg);
   background-size: cover;
   width: 20px;
   height: 20px;
-  margin: 0 auto;
+  margin: 3px auto;
   cursor: pointer;
+
 }
 
 @media (max-width: 480px) {

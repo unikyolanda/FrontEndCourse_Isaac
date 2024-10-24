@@ -5,6 +5,7 @@ import {
   ref,
   update as dbUpdate,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
 
 const right1 = document.getElementById("right1");
@@ -32,17 +33,24 @@ function getCollect() {
     Object.values(collectData).forEach((item) => {
       const imgUrl = item.collectedImg;
       const name = item.collectedName;
+      const uid = item.collectedUid;
 
       const collectArticle = document.createElement("div");
       collectArticle.className = "collectedStar";
       collectArticle.innerHTML = `          
-      <img class="collectedStarImg" src=${imgUrl}></img>
+      <a href="../content/content.html?uid=${uid}"><img class="collectedStarImg" src=${imgUrl}></img></a>
         <p class="collectedName">${name}</p>
-      <div class="trashBin"></div>
+      <div class="trashBin" id="${uid}trash"></div>
       `;
       document.getElementById("right2").appendChild(collectArticle);
 
-      console.log(imgUrl, name);
+      document
+        .getElementById(`${uid}trash`)
+        .addEventListener("click", function () {
+          remove(userRef, item);
+          collectArticle.remove();
+        });
+
     });
   });
 }

@@ -178,6 +178,9 @@ export const monitourAuthState = async () => {
             const collectedImg = element
               .closest(".star")
               .getAttribute("data-img");
+            const collectedUid = element
+              .closest(".star")
+              .getAttribute("data-uid");
 
             const collectRef = ref(
               db,
@@ -187,6 +190,7 @@ export const monitourAuthState = async () => {
             set(collectRef, {
               collectedName: collectedName,
               collectedImg: collectedImg,
+              collectedUid: collectedUid,
             });
             console.log(collectedName, collectedImg);
 
@@ -199,6 +203,7 @@ export const monitourAuthState = async () => {
                 remove(collectRef, {
                   collectedName: collectedName,
                   collectedImg: collectedImg,
+                  collectedUid: collectedUid,
                 });
               });
             }

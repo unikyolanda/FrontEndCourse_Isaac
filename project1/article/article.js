@@ -49,7 +49,7 @@ function initPage() {
             articleDiv.className = "article";
 
             articleDiv.innerHTML = `
-            <div class="star" data-name="${name}" data-img="${img}" >
+            <div class="star" data-name="${name}" data-img="${img}" data-uid=${uid} >
             <div class="starOn"></div>
             <div class="starOff"></div>      
             </div>
