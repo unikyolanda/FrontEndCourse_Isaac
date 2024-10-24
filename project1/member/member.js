@@ -19,6 +19,7 @@ const profilePhoto = document.getElementById("profilePhoto");
 const inputName = document.getElementById("inputName");
 const inputPhone = document.getElementById("inputPhone");
 const inputmail = document.getElementById("inputmail");
+/*打開星星標籤取消星星標籤 */
 
 function getCollect() {
   const auth = getAuth();
@@ -26,7 +27,6 @@ function getCollect() {
   const db = getDatabase();
 
   console.log(currentUser.uid);
-
   const userRef = ref(db, `user/` + currentUser.uid + "/collect");
   onValue(userRef, (snapshot) => {
     const collectData = snapshot.val();
@@ -50,7 +50,6 @@ function getCollect() {
           remove(userRef, item);
           collectArticle.remove();
         });
-
     });
   });
 }
@@ -63,6 +62,7 @@ auth.onAuthStateChanged((user) => {
     console.log("No user is signed in");
   }
 });
+/*打開星星標籤取消星星標籤 */
 
 let originalData = {
   name: "",
