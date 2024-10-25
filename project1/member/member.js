@@ -27,30 +27,46 @@ function getCollect() {
   const db = getDatabase();
 
   console.log(currentUser.uid);
-  const userRef = ref(db, `user/` + currentUser.uid + "/collect");
+  const userRef = ref(db, `user/${currentUser.uid}/collect`);
+
   onValue(userRef, (snapshot) => {
     const collectData = snapshot.val();
-    Object.values(collectData).forEach((item) => {
-      const imgUrl = item.collectedImg;
-      const name = item.collectedName;
-      const uid = item.collectedUid;
+    // 先清空現有內容，避免重複
+    document.getElementById("right2").innerHTML = "";
 
-      const collectArticle = document.createElement("div");
-      collectArticle.className = "collectedStar";
-      collectArticle.innerHTML = `          
-      <a href="../content/content.html?uid=${uid}"><img class="collectedStarImg" src=${imgUrl}></img></a>
-        <p class="collectedName">${name}</p>
-      <div class="trashBin" id="${uid}trash"></div>
-      `;
-      document.getElementById("right2").appendChild(collectArticle);
+    if (collectData) {
+      // 添加檢查，確保 collectData 存在
+      Object.entries(collectData).forEach(([key, item]) => {
+        // 使用 entries 來獲取 key
+        const imgUrl = item.collectedImg;
+        const name = item.collectedName;
+        const uid = item.collectedUid;
 
-      document
-        .getElementById(`${uid}trash`)
-        .addEventListener("click", function () {
-          remove(userRef, item);
-          collectArticle.remove();
-        });
-    });
+        const collectArticle = document.createElement("div");
+        collectArticle.className = "collectedStar";
+        collectArticle.innerHTML = `          
+        <a href="../content/content.html?uid=${uid}"><img class="collectedStarImg" src=${imgUrl}></img></a>
+          <p class="collectedName">${name}</p>
+        <div class="trashBin" id="${uid}trash"></div>
+        `;
+        document.getElementById("right2").appendChild(collectArticle);
+
+        document
+          .getElementById(`${uid}trash`)
+          .addEventListener("click", function () {
+            // 使用具體的路徑來刪除特定項目
+            const itemRef = ref(db, `user/${currentUser.uid}/collect/${key}`);
+            remove(itemRef)
+              .then(() => {
+                console.log("項目已成功刪除");
+                collectArticle.remove(); // 可以保留這行，因為操作成功後移除 DOM 元素
+              })
+              .catch((error) => {
+                console.error("刪除時發生錯誤:", error);
+              });
+          });
+      });
+    }
   });
 }
 

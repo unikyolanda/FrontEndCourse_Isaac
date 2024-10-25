@@ -1,3 +1,13 @@
+import * as Firebase from "../common/firebase.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getDatabase,
+  ref,
+  update as dbUpdate,
+  onValue,
+  remove,
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   // 圖片彈窗相關代碼
 
