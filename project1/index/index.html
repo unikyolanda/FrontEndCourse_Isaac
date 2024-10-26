@@ -18,7 +18,9 @@
         <div class="navbarp"><a href="../article/article.html">探索</a></div>
         <div class="navbarp">技能樹</div>
         <div class="navbarp" id="loginGo">登入</div>
-        <div class="navbarp" id="member"><a href="../member/member.html">會員</a></div>
+        <div class="navbarp" id="member">
+          <a href="../member/member.html">會員</a>
+        </div>
 
         <div class="navbarp" id="navSearch">
           <img src="Image/FE_search_green.png" />
@@ -123,6 +125,145 @@
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>
       <div class="loadingBtm"></div>
+    </div>
+
+    <div id="quiz">
+      <div id="quizBackground">
+        <div id="quizImg"></div>
+      </div>
+      <div id="quizContent">
+        <div id="intro">
+          <h1 id="starth1">測驗說明</h1>
+          <p class="quizParagraph">
+            點選「開始測驗」後，系統會根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的適合度。
+          </p>
+          <button id="startBtn" class="quizOption">開始測驗</button>
+        </div>
+
+        <div id="q1">
+          <h2 class="quizTitle">選擇在哪個縣市學習？</h2>
+          <p class="quizNumber">1/5</p>
+          <button class="answerOption" data-question="1" data-answer="台北">
+            台北
+          </button>
+          <button class="answerOption" data-question="1" data-answer="台中">
+            台中
+          </button>
+          <button class="answerOption" data-question="1" data-answer="高雄">
+            高雄
+          </button>
+          <button class="answerOption" data-question="1" data-answer="各地">
+            各地
+          </button>
+          <button class="answerOption" data-question="1" data-answer="不重要">
+            不重要
+          </button>
+        </div>
+
+        <div id="q2">
+          <h2 class="quizTitle">每月能撥出多少費用學習？</h2>
+          <p class="quizNumber">2/5</p>
+          <button
+            class="answerOption"
+            data-question="2"
+            data-answer="3000元以下"
+          >
+            3000元以下
+          </button>
+          <button class="answerOption" data-question="2" data-answer="6000元內">
+            6000元內
+          </button>
+          <button
+            class="answerOption"
+            data-question="2"
+            data-answer="10000元內"
+          >
+            10000元內
+          </button>
+          <button
+            class="answerOption"
+            data-question="2"
+            data-answer="10001元以上"
+          >
+            10001元以上
+          </button>
+          <button class="answerOption" data-question="2" data-answer="不重要">
+            不重要
+          </button>
+        </div>
+
+        <div id="q3">
+          <h2 class="quizTitle">每周能撥出多少時間學習？</h2>
+          <p class="quizNumber">4/5</p>
+          <button
+            class="answerOption"
+            data-question="3"
+            data-answer="16小時以下"
+          >
+            16小時以下
+          </button>
+          <button class="answerOption" data-question="3" data-answer="30小時內">
+            30小時內
+          </button>
+          <button class="answerOption" data-question="3" data-answer="45小時內">
+            45小時內
+          </button>
+          <button
+            class="answerOption"
+            data-question="3"
+            data-answer="46小時以上"
+          >
+            46小時以上
+          </button>
+          <button class="answerOption" data-question="3" data-answer="不重要">
+            不重要
+          </button>
+        </div>
+
+        <div id="q4">
+          <h2 class="quizTitle">對班制的需求是？</h2>
+          <p class="quizNumber">4/5</p>
+          <button class="answerOption" data-question="4" data-answer="大班制">
+            大班制
+          </button>
+          <button class="answerOption" data-question="4" data-answer="小班制">
+            小班制
+          </button>
+          <button class="answerOption" data-question="4" data-answer="一對一">
+            一對一
+          </button>
+          <button class="answerOption" data-question="4" data-answer="不重要">
+            不重要
+          </button>
+        </div>
+
+        <div id="q5">
+          <h2 class="quizTitle">喜歡什麼樣的教學方式？</h2>
+          <p class="quizNumber">5/5</p>
+          <button class="answerOption" data-question="5" data-answer="放養制">
+            放養制
+          </button>
+          <button
+            class="answerOption"
+            data-question="5"
+            data-answer="手把手教制"
+          >
+            手把手教制
+          </button>
+          <button class="answerOption" data-question="5" data-answer="不重要">
+            不重要
+          </button>
+        </div>
+
+        <div id="quizResult">
+          <h1 id="starth1">測驗結果</h1>
+          <div id="pie">
+            <div id="bigPie"></div>
+            <div id="smallPie"></div>
+          </div>
+          <button id="resultBtn" class="quizOption"></button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -1,3 +1,68 @@
+const q1 = document.getElementById("q1");
+const q2 = document.getElementById("q2");
+const q3 = document.getElementById("q3");
+const q4 = document.getElementById("q4");
+const q5 = document.getElementById("q5");
+const quizResult = document.getElementById("quizResult");
+
+function StartQuiz() {
+  const startBtn = document.getElementById("startBtn");
+  const intro = document.getElementById("intro");
+  if (startBtn) {
+    startBtn.addEventListener("click", function () {
+      intro.style.display = "none";
+      q1.style.display = "flex";
+    });
+  }
+}
+StartQuiz();
+
+const answerOption = document.querySelectorAll(".answerOption"); // 選擇所有測驗按鈕
+let anserAll = {
+  city: "s",
+  fee: "s",
+  weekHour: "s",
+  classType: "s",
+  teachWay: "s",
+};
+if (answerOption) {
+  answerOption.forEach((button) => {
+    button.addEventListener("click", function () {
+      const whichOne = this.getAttribute("data-question");
+      const answer = this.getAttribute("data-answer");
+
+      if (whichOne == 1) {
+        anserAll.city = answer;
+        console.log(anserAll);
+        q1.style.display = "none ";
+        q2.style.display = "flex ";
+      } else if (whichOne == 2) {
+        anserAll.fee = answer;
+        q2.style.display = "none ";
+        q3.style.display = "flex ";
+        console.log(anserAll);
+      } else if (whichOne == 3) {
+        anserAll.weekHour = answer;
+        q3.style.display = "none ";
+        q4.style.display = "flex ";
+        console.log(anserAll);
+      } else if (whichOne == 4) {
+        anserAll.classType = answer;
+        q4.style.display = "none ";
+        q5.style.display = "flex ";
+        console.log(anserAll);
+      } else if (whichOne == 5) {
+        anserAll.teachWay = answer;
+        q5.style.display = "none ";
+        quizResult.style.display = "flex ";
+        console.log(anserAll);
+      } else {
+        console.log("選擇有問題");
+      }
+    });
+  });
+}
+
 /*  Login wrong  */
 import * as Firebase from "./firebase.js";
 

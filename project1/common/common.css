@@ -1,5 +1,317 @@
+#quiz {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+}
 
+#quizBackground {
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 450px;
+  background-color: rgb(26, 216, 211);
+  border-radius: 4px;
+  z-index: 30;
+}
+#quizImg {
+  border-radius: 4px;
+  background: url(../index/Image/Staff-Selection-.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(100%);
+  opacity: 0.1;
+  width: 350px;
+  height: 450px;
+}
+#quizContent {
+  position: fixed;
+  width: 350px;
+  height: 450px;
+  border-radius: 4px;
+  z-index: 31;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: center;
+}
+#starth1 {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.quizParagraph {
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: left;
+  color: white;
+  font-size: 16px;
+  margin: 20px 40px;
+}
+.answerOption {
+  color: rgb(26, 216, 211);
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  line-height: 50px;
+  cursor: pointer;
+  border: none;
+  margin: 10px auto;
+  display: block;
+}
+.answerOption:hover {
+  color: white;
+  background-color: rgb(179, 219, 218);
+}
+.quizOption {
+  color: rgb(26, 216, 211);
+  font-size: 18px;
+  background-color: white;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  line-height: 50px;
+  cursor: pointer;
+  border: none;
+  margin: 10px auto;
+  display: block;
+}
+.quizOption:hover {
+  color: white;
+  background-color: rgb(179, 219, 218);
+}
 
+#q2,
+#q3,
+#q4,
+#q5,
+#q1,
+#quizResult {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.quizNumber {
+  letter-spacing: 1px;
+  line-height: 16px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  margin: 5px 40px;
+}
+.quizTitle {
+  letter-spacing: 1px;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin: 10px 40px;
+}
+
+#pie {
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 170px;
+  margin: 40px;
+  display: flex;
+}
+
+#bigPie {
+  position: fixed;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  border-radius: 75px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 33;
+}
+
+#smallPie::before {
+  content: "";
+  position: fixed;
+  transform: rotate(180deg);
+  animation: rotateCircle 2s ease 0.5s 1 forwards;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 75px;
+  border-bottom: solid 4px rgb(26, 216, 211);
+  border-top: solid 4px #4925d9;
+  border-right: solid 4px rgb(26, 216, 211);
+  border-left: solid 4px #4925d9;
+  z-index: 35;
+}
+
+#smallPie {
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 75px;
+  color: rgb(26, 216, 211);
+  z-index: 36;
+}
+#smallPie::after {
+  content: "";
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 75px;
+  color: rgb(26, 216, 211);
+  background-color: white;
+  z-index: 37;
+  animation: numberAni 2s ease 0.5s 1 forwards;
+}
+
+#resultBtn::after {
+  content: "";
+  color: rgb(26, 216, 211);
+  text-align: center;
+  animation: nameAni 2s linear 0.5s 1 forwards;
+}
+
+@keyframes nameAni {
+  0% {
+    content: "六角學院";
+  }
+  5% {
+    content: "五倍紅寶石";
+  }
+  10% {
+    content: "AppWorks School";
+  }
+  15% {
+    content: "六角學院";
+  }
+  20% {
+    content: "Udemy";
+  }
+  25% {
+    content: "五倍紅寶石";
+  }
+  30% {
+    content: "六角學院";
+  }
+  35% {
+    content: "Udemy";
+  }
+  40% {
+    content: "五倍紅寶石";
+  }
+  45% {
+    content: "彭彭的課程教學";
+  }
+  50% {
+    content: "AppWorks School";
+  }
+  55% {
+    content: "Udemy";
+  }
+  60% {
+    content: "六角學院";
+  }
+  65% {
+    content: "Udemy";
+  }
+  70% {
+    content: "五倍紅寶石";
+  }
+  75% {
+    content: "AppWorks School";
+  }
+  80% {
+    content: "彭彭的課程教學";
+  }
+  85% {
+    content: "AppWorks School";
+  }
+  90% {
+    content: "Udemy";
+  }
+  95% {
+    content: "五倍紅寶石";
+  }
+  100% {
+    content: "AppWorks School";
+  }
+}
+
+@keyframes numberAni {
+  0% {
+    content: "0%";
+  }
+  10% {
+    content: "15%";
+  }
+  20% {
+    content: "30%";
+  }
+  30% {
+    content: "45%";
+  }
+  40% {
+    content: "60%";
+  }
+  50% {
+    content: "75%";
+  }
+  60% {
+    content: "90%";
+  }
+  70% {
+    content: "80%";
+  }
+  80% {
+    content: "70%";
+  }
+  90% {
+    content: "85%";
+  }
+  100% {
+    content: "200%";
+  }
+}
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-140deg);
+  }
+  80% {
+    transform: rotate(190deg);
+  }
+
+  100% {
+    transform: rotate(var(--final-rotation));
+  }
+}
 
 /*Login＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ */
 
@@ -211,5 +523,3 @@
   background-color: rgba(0, 0, 0, 0.5);
   height: calc(50vh - 42.5px);
 }
-
-
