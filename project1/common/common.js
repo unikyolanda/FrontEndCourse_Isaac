@@ -222,6 +222,110 @@ function selectAnswer() {
           q5.style.display = "none ";
           quizResult.style.display = "flex ";
           console.log(anserAll);
+          fetch("../common/front-enter-export.json")
+            .then((response) => response.json())
+            .then((data) => {
+              function findBestMatch(userAnswers, courseData) {
+                // 權重設定
+                const weights = {
+                  city: 0.3,
+                  fee: 0.2,
+                  weekHour: 0.2,
+                  classType: 0.15,
+                  teachWay: 0.15,
+                };
+
+                let bestMatchName = null;
+                let bestMatchUid = null;
+
+                let highestScore = 0;
+
+                // 遍歷所有課程
+                Object.entries(courseData).forEach(([uid, course]) => {
+                  let score = 0;
+
+                  // 地點匹配
+                  if (
+                    userAnswers.city === "不重要" ||
+                    userAnswers.city === "各地" ||
+                    course.city === userAnswers.city
+                  ) {
+                    score += weights.city;
+                  }
+
+                  // 費用匹配
+                  if (
+                    userAnswers.fee === "不重要" ||
+                    parseInt(course.fee) <= parseInt(userAnswers.fee)
+                  ) {
+                    score += weights.fee;
+                  }
+
+                  // 時數匹配
+                  if (
+                    userAnswers.weekHour === "不重要" ||
+                    parseInt(course.weekHour) <= parseInt(userAnswers.weekHour)
+                  ) {
+                    score += weights.weekHour;
+                  }
+
+                  // 班制匹配
+                  if (
+                    userAnswers.classType === "不重要" ||
+                    course.classType === userAnswers.classType
+                  ) {
+                    score += weights.classType;
+                  }
+
+                  // 教學方式匹配
+                  if (
+                    userAnswers.teachWay === "不重要" ||
+                    course.teachWay === userAnswers.teachWay
+                  ) {
+                    score += weights.teachWay;
+                  }
+
+                  // 更新最佳匹配
+                  if (score > highestScore) {
+                    highestScore = score;
+                    bestMatchName = course.name;
+                    bestMatchUid = course.uid;
+                  }
+                });
+
+                // 計算百分比
+                const matchPercentage = Math.round(highestScore * 100);
+                console.log(`最佳匹配課程: ${bestMatchName}`);
+                console.log(`最佳匹配課程: ${bestMatchUid}`);
+
+                console.log(`匹配度: ${matchPercentage}%`);
+
+                const resultBtn = document.getElementById("resultBtn");
+
+                resultBtn.style.setProperty(
+                  "--match-course",
+                  `"${bestMatchName}"`
+                );
+                const smallPie = document.getElementById("smallPie");
+                smallPie.style.setProperty(
+                  "--match-percentage",
+                  `"${matchPercentage}%"`
+                );
+
+                resultBtn.addEventListener("click", function () {
+                  window.location.href = `../content/content.html?uid=${bestMatchUid}`;
+                });
+                return bestMatchName, bestMatchUid;
+              }
+
+              // 在 selectAnswer 函數中使用：
+              if (whichOne == 5) {
+                anserAll.teachWay = answer;
+                q5.style.display = "none";
+                quizResult.style.display = "flex";
+                findBestMatch(anserAll, data.article);
+              }
+            });
         } else {
           console.log("選擇有問題");
         }

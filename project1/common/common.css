@@ -175,7 +175,7 @@
   z-index: 36;
 }
 #smallPie::after {
-  content: "";
+  content: "0%";
   position: fixed;
   width: 140px;
   height: 140px;
@@ -276,7 +276,7 @@
     content: "五倍紅寶石";
   }
   100% {
-    content: "AppWorks School";
+    content: var(--match-course, "AppWorks School");
   }
 }
 
@@ -312,7 +312,7 @@
     content: "85%";
   }
   100% {
-    content: "200%";
+    content: var(--match-percentage, "100%");
   }
 }
 @keyframes rotateCircle {
