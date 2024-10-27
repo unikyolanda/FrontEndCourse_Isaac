@@ -313,6 +313,5 @@ button {
 }
 
 .for-end-result::after {
-  content: "";
   animation: nameAni 2s linear 0.5s 1 forwards;
 }
