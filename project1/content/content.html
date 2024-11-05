@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="content.css" />
     <link rel="stylesheet" href="../common/common.css" />
+    <script type="module" src="../common/firebase.js"></script>
   </head>
 
   <body>
@@ -15,8 +16,12 @@
       /></a>
       <nav class="navbar">
         <div class="navbarp"><a href="../article/article.html">探索</a></div>
-        <div class="navbarp" >技能樹</div>
+        <div class="navbarp">技能樹</div>
         <div class="navbarp" id="loginGo">登入</div>
+        <div class="navbarp" id="member">
+          <a href="../member/member.html">會員</a>
+        </div>
+
         <div class="navbarp" id="navSearch">
           <img src="../index/Image/FE_search_green.png" />
         </div>
@@ -25,7 +30,7 @@
     <div id="toppic1"></div>
     <!--........................-->
 
-    <div class="testgo">
+    <div class="testgo" id="testgogo">
       <img src="../index/Image/FE_test_go.png" />
     </div>
 
@@ -53,8 +58,8 @@
         /></a>
       </div>
     </footer>
-    <script src="content.js"></script>
-    <script src="../common/common.js"></script>
+    <script type="module" src="content.js"></script>
+    <script type="module" src="../common/common.js"></script>
 
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>

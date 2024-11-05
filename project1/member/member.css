@@ -1,35 +1,8 @@
-.showPics {
-  position: fixed;
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  z-index: 15;
-  background-color: rgb(0, 0, 0, 0.8);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.pics {
-  width: 750px;
-  height: 550px;
-  border-radius: 4px;
-}
-
-.arroww {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-}
-
-/* ........................................... */
-
-.toppic {
-  margin-top: 0;
+#toppic {
   width: 100%;
   height: 380px;
+  background-image: url(Image/member-key.jpg);
+  margin-top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,10 +12,8 @@
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  animation: chamgeImage 20s infinite;
 }
-
-.toptext {
+#toppicText {
   font-size: 24px;
   color: white;
   background-color: rgba(128, 128, 128, 0.7);
@@ -50,200 +21,177 @@
   border-radius: 5px;
   letter-spacing: 10px;
   padding-left: 23px;
-  z-index: 2; /* 確保圖片在文字下面 */
+  z-index: 2;
 }
-
-.toppic:hover .toptext {
-  opacity: 0.6;
-}
-
 main {
-  display: flex;
-  flex-direction: row;
-  align-items: self-start;
-  justify-content: space-around;
-  padding: 20px;
-}
-.left {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.mainPic {
-  height: 266px;
-  width: 400px;
-  margin: 15px auto;
-  border-radius: 5px;
-  transition: width 0.6s, height 0.6s;
-}
-
-.mainPic:hover {
-  width: calc(400px * 1.2);
-  height: calc(266px * 1.2);
-}
-
-.right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  margin-right: 100px;
-}
-
-.title {
-  font-size: 20px;
-  color: rgb(26, 216, 211);
-  text-align: left;
-  line-height: 8px;
-  font-weight: bold;
-  padding: 15px;
   margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  height: auto;
+}
+#left {
+  margin-top: 40px;
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+}
+#right1 {
+  height: 100%;
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+#right2 {
+  height: 100%;
+  width: 55%;
+  display: none;
+  justify-content: start;
+  align-items: start;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
-.mainContent {
-  font-size: 16px;
-  color: rgb(128, 128, 128);
-  line-height: 28px;
-  padding: 15px;
-}
-
-.mainContent br + br {
-  content: "";
-  display: block;
-  margin-top: 30px;
-}
-.conclusion {
+.quizOption {
+  color: white;
   font-size: 18px;
-  color: rgb(26, 216, 211);
+  background-color: rgb(26, 216, 211);
   text-align: center;
-  line-height: 8px;
-  padding-top: 100px;
+  padding: 0px 23px;
+  margin: 30px auto;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  line-height: 50px;
+  cursor: pointer;
+  border: none;
+  display: block;
 }
 
-.underLine {
-  border-bottom: 1px solid rgb(26, 216, 211);
-  width: 20px;
-  margin: 25px auto;
+.quizOption:hover {
+  color: white;
+  background-color: rgb(179, 219, 218);
 }
-.detail {
+
+#profilePhoto {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background: url(Image/profile-user-img.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0px;
+  margin-bottom: 10px;
+}
+
+.right1Form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px auto;
+  margin-left: 50px;
+}
+.right1Form p {
+  color: rgb(158, 158, 158);
+  font-size: 16px;
+  width: 100px;
+  text-align: center;
+  padding-top: 4px;
+}
+.right1Form input {
+  background-color: rgba(230, 230, 230, 0);
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  border: 0px solid rgba(230, 230, 230, 0.7);
+  width: 320px;
+  text-align: left;
+  border-radius: 5px;
+  height: 30px;
+  padding-left: 5px;
+}
+#change {
+  display: none;
+}
+
+#change .quizOption {
+  margin: 30px;
+}
+
+.collectedStar {
+  width: calc(33.33% - 14px); /* 減去間距的影響 */
+  height: 300px;
   display: flex;
   flex-direction: column;
-  align-self: center;
-  justify-content: center;
-  width: 80%;
-  margin: 10px auto;
-  padding: 10px;
-}
-.box {
-  display: flex;
-  height: 45px;
-  flex-direction: row;
-  justify-content: start;
-  border-bottom: 1px solid rgba(197, 197, 197, 0.8);
   align-items: center;
+  margin: 0;
+}
+.collectedStarImg {
+  width: 180px;
+  height: 180px;
+  margin: 10px;
+  background-color: azure;
+  transition: all 0.6s;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.collectedStarImg:hover {
+  width: 200px;
+  height: 200px;
 }
 
-.qq {
-  font-size: 16px;
+.collectedName {
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
   color: rgb(26, 216, 211);
-  line-height: 35px;
-  font-weight: bold;
-  width: 100px;
-  letter-spacing: 3px;
+  margin: 6px auto;
 }
-.aa {
-  font-size: 16px;
-  color: rgb(128, 128, 128);
-  line-height: 35px;
-  letter-spacing: 3px;
+.trashBin {
+  background: url(Image/rubbish-bin.svg);
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  margin: 3px auto;
+  cursor: pointer;
+
 }
 
 @media (max-width: 480px) {
-  .showPics .mainPic {
-    width: auto;
-    height: auto;
-    max-width: none; /* Override any hover-based max-width rules */
-    transition: none; /* Ensure no hover-based resizing occurs in the modal */
-  }
-  .mainPic:hover {
-    width: auto;
-    height: auto;
-  }
-  .toptext {
-    font-size: 12px;
-  }
-  .toppic {
-    height: 200px;
-  }
-  .pics {
-    width: calc(750px * 0.4);
-    height: calc(550px * 0.4);
-  }
-
   main {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .left {
-    width: 100%;
-    padding: 10px 0;
-    margin-bottom: 30px;
-  }
-
-  .right {
-    width: 100%;
-    margin: 0;
-    padding: 10px 0;
-  }
-
-  .mainPic {
-    width: 90%;
     height: auto;
-    max-width: calc(400px * 0.8);
-    transition: none;
   }
-
-  #pic2,
-  #pic3,
-  #pic4,
-  #pic5 {
-    display: none;
-    transition: none;
-  }
-
-  .mainContent {
-    font-size: 14px;
+  #left {
     width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
+    height: auto;
 
-  .title {
-    font-size: 18px;
-    padding: 15px 0;
-    text-align: center;
-    margin-top: 0px;
+    flex-direction: column;
   }
-
-  .conclusion {
-    font-size: 16px;
-    padding-top: 50px;
-  }
-
-  .detail {
+  #right1 {
     width: 100%;
-    padding: 10px 0;
+    height: auto;
+
+    padding: 10px;
   }
-  .aa,
-  .qq {
-    font-size: 10px;
-    line-height: 20px;
+  #right2 {
+    height: auto;
+    width: 50%;
+
+    padding: 10px;
   }
 }
-
 /* ........................................... */
 
 * {
@@ -652,4 +600,24 @@ footer {
   100% {
     transform: translateY(0);
   }
+}
+
+.microphone {
+  background: url(../index/Image/microphone.svg);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.searchsearch {
+  background: url(../index/Image/FE_search_green.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
 }

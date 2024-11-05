@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>文章列表</title>
+    <title>Front-Enter - 前端轉職資訊</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="article.css" />
     <link rel="stylesheet" href="../common/common.css" />
+    <link rel="stylesheet" href="member.css" />
     <script type="module" src="../common/firebase.js"></script>
   </head>
 
@@ -27,21 +27,67 @@
         </div>
       </nav>
     </header>
-    <section class="toppic">
-      <p class="toptext">搜羅前端學校</p>
+
+    <section id="toppic">
+      <p id="toppicText">會員中心</p>
     </section>
-    <section class="fourOptions">
-      <div id="allopt">全部</div>
-      <div id="opt1">小班制</div>
-      <div id="opt2">放養制</div>
-      <div id="opt3">一對一</div>
-    </section>
-    <section id="articlemain"></section>
-    <div id="testgogo" class="testgo">
+
+    <main>
+      <div id="left">
+        <botton class="quizOption" id="memeberId">個人資料</botton>
+        <botton class="quizOption" id="collect">收藏</botton>
+        <botton class="quizOption" id="memeberLogout">登出</botton>
+      </div>
+      <div class="right" id="right1">
+        <div id="profilePhoto"></div>
+        <form class="right1Form">
+          <p>姓名</p>
+          <input
+            maxlength="10"
+            id="inputName"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入姓名"
+          />
+        </form>
+        <form class="right1Form">
+          <p>手機</p>
+          <input
+            maxlength="20"
+            id="inputPhone"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入電話"
+          />
+        </form>
+        <form class="right1Form">
+          <p>信箱</p>
+          <input
+            maxlength="40"
+            id="inputmail"
+            disabled=""
+            type="text"
+            value=""
+            placeholder="請輸入信箱"
+          />
+        </form>
+        <div id="change">
+          <botton class="quizOption" id="yesChanged">確定</botton>
+          <botton class="quizOption" id="noChanged">取消</botton>
+        </div>
+        <div id="changechange">
+          <botton class="quizOption" id="infoChanged">修改資料</botton>
+        </div>
+      </div>
+      <div class="right" id="right2"></div>
+    </main>
+
+    <div class="testgo" id="testgogo">
       <img src="../index/Image/FE_test_go.png" />
     </div>
 
-    <main></main>
     <section class="goUp">
       <img src="../index/Image/FE_TOP.png" id="upup" />
     </section>
@@ -64,13 +110,12 @@
         /></a>
       </div>
     </footer>
-    <script type="module" src="article.js"></script>
+    <script type="module" src="member.js"></script>
     <script type="module" src="../common/common.js"></script>
 
     <div class="loadpage">
       <div class="loading"><div class="loading-img"></div></div>
       <div class="loadingBtm"></div>
     </div>
-    <div id="doTest"></div>
   </body>
 </html>

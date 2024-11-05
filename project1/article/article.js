@@ -1,3 +1,56 @@
+import * as Firebase from "../common/firebase.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getDatabase,
+  ref,
+  update as dbUpdate,
+  onValue,
+  remove,
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+
+function turnOnOffStarsAtTheBeginning() {
+  const auth = getAuth();
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const currentUser = auth.currentUser;
+      const db = getDatabase();
+      const userRef = ref(db, `user/${currentUser.uid}/collect`);
+
+      // 首先將所有星星設為預設狀態（未收藏）
+      const allStarOn = document.querySelectorAll('[id^="starOn"]');
+      const allStarOff = document.querySelectorAll('[id^="starOff"]');
+
+      allStarOn.forEach((star) => {
+        star.style.display = "none";
+      });
+
+      allStarOff.forEach((star) => {
+        star.style.display = "block";
+      });
+
+      // 監聽收藏數據的變化
+      onValue(userRef, (snapshot) => {
+        const collectData = snapshot.val();
+
+        if (collectData) {
+          Object.values(collectData).forEach((item) => {
+            const uid = item.collectedUid;
+            const starOn = document.getElementById(`starOn${uid}`);
+            const starOff = document.getElementById(`starOff${uid}`);
+
+            if (starOn && starOff) {
+              // 如果在收藏列表中，顯示實心星星
+              starOn.style.display = "block";
+              starOff.style.display = "none";
+            }
+          });
+        }
+      });
+    }
+  });
+}
+
 // 將 kk 函數重命名為更具描述性的名稱，並直接返回搜索參數
 function getSearchParam() {
   var getUrlString = location.href;
@@ -49,6 +102,10 @@ function initPage() {
             articleDiv.className = "article";
 
             articleDiv.innerHTML = `
+            <div class="star" data-name="${name}" data-img="${img}" data-uid=${uid} >
+            <div class="starOn" id="starOn${uid}"></div>
+            <div class="starOff" id="starOff${uid}"></div>      
+            </div>
               <div class="location">
                 <img src="aritcleimg/location_icon_one.png" class="locationIcon" />
                 <p class="locationText cityFilter" data-city="${city}">${city}</p>
@@ -66,6 +123,7 @@ function initPage() {
               </div>
             `;
             articlesContainer.appendChild(articleDiv);
+            turnOnOffStarsAtTheBeginning();
           }
         }
 
